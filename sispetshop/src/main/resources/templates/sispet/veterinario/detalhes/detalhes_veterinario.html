@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>SisPetShop</title>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="../../../materialize/css/materialize.min.css"  media="screen,projection"/>
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <link rel="stylesheet" href="../../../style/styleCss.css"/>
+    </head>    
+    <body>
+        <header>
+            <nav>
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo">Veterinário</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="/clinicas" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista de Clinicas Pet</a></li>
+                        
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        
+        <div th:each="veterinario : ${veterinario}" class="container detalhesVeterinario">
+            <h5>Detalhes do Veterinario</h5>    
+            <div class="row">
+                <p>CRMV: <span th:text="${veterinario.crmv}"></span></p>
+                <p>Nome: <span th:text="${veterinario.nome}"></span></p>
+                <p>Idade: <span th:text="${veterinario.idade}"></span></p>
+                <p>Telefone: <span th:text="${veterinario.telefone}"></span></p>
+                <p>E-mail: <span th:text="${veterinario.email}"></span></p>
+                <p>Endereço Residencial: <span th:text="${veterinario.endereco_residencial}"></span></p>
+            </div>
+        </div>
+        
+        <p>Clique no link a seguir caso queira voltar para a <strong>Lista de Veterinários</strong> da Clinica Pet Shop: <a th:href="${(#mvc.url('VC#listaVeterinarios').arg(0, veterinario.clinica.id)).build()}"><span th:text="${veterinario.clinica.nome}"></span></a></p>
+        
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+    </body>    
+</html>
+
+
+
+

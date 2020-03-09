@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>Sistema Clinica PetShop</title>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="../../materialize/css/materialize.min.css"  media="screen,projection"/>
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="../../../style/styleCss.css"/>
+
+
+    </head>          
+    <body>
+        <header>
+            <nav>
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo">Alterar Cadastro de Venda:</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="/clinicas" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista de Clinicas</a></li>
+
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container formProduto">
+            <form class="container" method="post">
+                <h5>Dados da Venda</h5>
+                <div>
+                    <input type="text" th:value="${atendente.id}" name="atendenteid" hidden="true"/>
+                </div>    
+                <div class="row">
+                    <div class="input-field col s9">
+                        Nome do produto: <input type="text" th:value="${venda.datavenda}" name="datavenda"/>
+
+                    </div>
+                    <div class="input-field col s3">
+                        Categoria: <input type="text" th:value="${venda.pago}" name="pago"/>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s9">
+                        Marca: <input type="text" th:value="${venda.formapagamento}" name="formapagamento"/>
+
+                    </div>
+                    <div class="input-field col s3">
+                        Insira o CPF do Cliente/Dono: <input type="text" th:value="${dono.cpf}" name="donoid"/>
+
+                    </div>
+                </div>
+                
+                <button class="waves-effect waves-light btn" type="submit" >Alterar</button>
+                
+            </form>
+        </div>
+
+
+        <div th:each="venda : ${venda}" class="container detalhesVenda">
+            <p>Codigo da venda: <span th:text="${venda.id}"></span></p>
+            <p>Data da venda: <span th:text="${venda.datavenda}"></span></p>
+            <p>Pagamento Finalizado: <span th:text="${venda.pago}"></span></p>
+            <p>Forma de Pagamento: <span th:text="${venda.formapagamento}"></span></p>
+        </div>
+        
+        <div th:each="dono : ${dono}" class="container detalhesVenda">
+            <p>CPF do Dono: <span th:text="${dono.cpf}"></span></p>
+            <p>Nome: <span th:text="${dono.nome}"></span></p>
+            <p>Endereço: <span th:text="${dono.endereco}"></span></p>
+            <p>Telefone: <span th:text="${dono.telefone}"></span></p>
+            <p>E-mail: <span th:text="${dono.email}"></span></p>
+        </div>
+        
+        <div th:each="atendente : ${atendente}" class="container detalhesVenda">
+            <p>Nome do Atendente: <span th:text="${atendente.nome}"></span></p>
+            <p>Idade: <span th:text="${atendente.idade}"></span></p>
+        </div>
+
+        <p>Clique no link a seguir caso queira voltar para a <strong>Lista de Vendas</strong> da Clinica Pet Shop: <a th:href="${(#mvc.url('AC#listaVendas').arg(0, atendente.id)).build()}"><span th:text="${atendente.clinica.nome}"></span></a></p>
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <!--JavaScript at end of body for optimized loading-->
+        <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
+    </body>    
+</html>
+
+
+
+
+
+

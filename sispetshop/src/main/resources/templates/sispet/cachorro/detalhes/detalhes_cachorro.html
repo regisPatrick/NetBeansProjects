@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br" 
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>SisPetShop</title>
+        <!-- Meta tags Obrigatórias -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link href="../../../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link rel="stylesheet" href="../../../style/styleCss.css"/>
+
+    </head>          
+    <body>
+        <header>
+            <nav>
+                <div class="jumbotron">
+                    <h1>Detalhes de Cachorro</h1>
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a href="/clinicas" class="btn btn-primary right-align">Lista de Clinicas</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <div th:each="cachorro : ${cachorro}" class="container detalhesCachorro">
+            <h5>Detalhes do Cachorro</h5>    
+                <p>Nome do Cachorro: <span th:text="${cachorro.nome}"></span></p>
+                <p>Raça: <span th:text="${cachorro.raca}"></span></p>
+                <p>Peso: <span th:text="${cachorro.peso}"></span></p>
+                <p>Altura: <span th:text="${cachorro.altura}"></span></p>
+                <p>Historico: <span th:text="${cachorro.historico}"></span></p>
+                <p>Vacina: <span th:text="${cachorro.vacina}"></span></p>
+        </div>
+        
+        <div th:each="dono : ${dono}" class="container detalhesCachorro">
+            <h5>Detalhes do Dono</h5>    
+                <p>CPF: <span th:text="${dono.cpf}"></span></p>
+                <p>Nome do Dono: <span th:text="${dono.nome}"></span></p>
+                <p>Endereço: <span th:text="${dono.endereco}"></span></p>
+                <p>Telefone: <span th:text="${dono.telefone}"></span></p>
+                <p>E-mail: <span th:text="${dono.email}"></span></p>
+        </div>
+
+        <p class="botaoCachorro">Clique no Botão a seguir caso queira ir para a <strong>Lista de Cachorros</strong>: <a class="btn btn-primary btn-small" th:href="${(#mvc.url('VC#listaCachorros').arg(0, cachorro.dono.cpf)).build()}">Cachorros</a></p>    
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    </body>    
+</html>
+
+
+

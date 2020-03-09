@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>Sistema Clinica PetShop</title>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <link rel="stylesheet" href="style/styleCss.css"/>
+    </head>    
+    <body>
+        <header>
+            <nav>
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo">Lista de Clinicas PetShop</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="/cadastrar_clinica_pet" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Cadastrar Clinica PetShop</a></li>
+
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <table class="container">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Endereço</th>
+                    <th>Telefone</th>
+                    <th>E-mail</th>
+                    <th>Alterar</th>
+                    <th>Deletar</th>
+                    <th>Ver Atendentes</th>
+                    <th>Ver Veterinarios</th>
+                    <th>Ver Produtos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="clinicaPetShop : ${clinicaPetShops}">
+                    <td><a th:href="${(#mvc.url('CC#detalhesClinica').arg(0, clinicaPetShop.id)).build()}"><span th:text="${clinicaPetShop.nome}"></span></a></td>
+                    <td><span th:text="${clinicaPetShop.endereco}"></span></td>
+                    <td><span th:text="${clinicaPetShop.telefone}"></span></td>
+                    <td><span th:text="${clinicaPetShop.email}"></span></td>
+                    <td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('CC#alterarClinica').arg(0, clinicaPetShop.id)).build()}"><i class="material-icons left">update</i></a></td>
+                    <td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('CC#deletarClinica').arg(0, clinicaPetShop.id)).build()}"><i class="material-icons left">delete</i></a></td> 
+                    <td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('AC#listaAtendentes').arg(0, clinicaPetShop.id)).build()}"><i class="material-icons left">people</i></a></td>
+                    <td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('VC#listaVeterinarios').arg(0, clinicaPetShop.id)).build()}"><i class="material-icons left">local_hospital</i></a></td>
+                    <td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('PC#listaProdutos').arg(0, clinicaPetShop.id)).build()}"><i class="material-icons left">shopping_cart</i></a></td> 
+            </tbody>
+        </table>
+
+        <p class="botaoCachorro">Clique no Botão a seguir caso queira ir para a <strong>Lista de Donos</strong>: <a class="waves-effect waves-light btn-small" href="/donos"><i class="material-icons left">pets</i></a></p>
+        
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <!--JavaScript at end of body for optimized loading-->
+        <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+    </body>    
+</html>

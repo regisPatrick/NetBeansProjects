@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Sistema Clinica PetShop</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="style/styleCss.css"/>
+    
+    
+</head>          
+<body>
+    <header>
+            <nav>
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo">Alterar Cadastro de Clinica / PetShop:</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="/clinicas" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista de Clinicas</a></li>
+                        
+                    </ul>
+                </div>
+            </nav>
+        </header>
+    
+    <div class="container formClinica">
+        <form class="container" method="post">
+            
+                <h5>Dados da Clinica</h5>    
+                Nome da Clinica: <input type="text" th:value="${clinicaPetShop.nome}" name="nome"/>
+                    
+                Endereço: <input type="text" th:value="${clinicaPetShop.endereco}" name="endereco"/>
+                
+            <div class="row">
+                <div class="input-field col s6">
+                    Telefone: <input type="text" th:value="${clinicaPetShop.telefone}" name="telefone"/>
+                        
+                </div>
+                <div class="input-field col s6">
+                    E-mail: <input type="text" th:value="${clinicaPetShop.email}" name="email"/>
+                    
+                </div>
+            </div>
+            <button class="waves-effect waves-light btn" type="submit">Alterar</button>
+            
+        </form>
+        </div>
+    
+    
+        <div th:each="clinicaPetShop : ${clinicaPetShop}" class="container detalhesClinica">
+            <p>Nome: <span th:text="${clinicaPetShop.nome}"></span></p>
+            <p>Endereço: <span th:text="${clinicaPetShop.endereco}"></span></p>
+            <p>Telefone: <span th:text="${clinicaPetShop.telefone}"></span></p>
+            <p>E-mail: <span th:text="${clinicaPetShop.email}"></span></p>
+        </div>
+  
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!--JavaScript at end of body for optimized loading-->
+  <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+  
+</body>    
+</html>
+
+
