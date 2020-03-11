@@ -5,9 +5,11 @@
  */
 package com.springbootessentials.SpringBootEssentials.config;
 
+import static com.springbootessentials.SpringBootEssentials.config.SecurityConstants.*;
 import com.springbootessentials.SpringBootEssentials.service.CustomUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -27,16 +29,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Autowired
     private CustomUserDetailService customUserDetailService;
     
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception{
+//        //super.configure(http);
+//        http.authorizeRequests()
+//                .antMatchers("/*/protected/**").hasRole("USER")
+//                .antMatchers("/*/admin/**").hasRole("ADMIN")
+//                .and()
+//                .httpBasic()
+//                .and()
+//                .csrf().disable();
+//    }
+    
     @Override
     protected void configure(HttpSecurity http) throws Exception{
-        //super.configure(http);
-        http.authorizeRequests()
+        http.cors().and().csrf().disable().authorizeRequests()
+                .antMatchers(HttpMethod.GET, SIGN_UP_URL).permitAll()
                 .antMatchers("/*/protected/**").hasRole("USER")
                 .antMatchers("/*/admin/**").hasRole("ADMIN")
                 .and()
-                .httpBasic()
-                .and()
-                .csrf().disable();
+                .addFilter(new JWTAuthenticationFilter(authenticationManager()))
+                .addFilter(new JWTAuthorizationFilter(authenticationManager(), customUserDetailService));
     }
     
     @Override

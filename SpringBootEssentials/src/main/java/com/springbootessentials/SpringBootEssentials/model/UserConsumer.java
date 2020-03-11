@@ -22,7 +22,7 @@ public class UserConsumer extends AbstractEntity{
     private String userName;
     
     @NotEmpty
-    @JsonIgnore
+    //@JsonIgnore
     private String password;
     
     @NotEmpty
