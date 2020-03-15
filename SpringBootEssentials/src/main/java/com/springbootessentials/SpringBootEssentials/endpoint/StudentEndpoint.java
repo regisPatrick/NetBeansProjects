@@ -10,6 +10,9 @@ import com.springbootessentials.SpringBootEssentials.error.ResourceNotFoundExcep
 import com.springbootessentials.SpringBootEssentials.model.Student;
 import com.springbootessentials.SpringBootEssentials.repository.StudentRepository;
 import com.springbootessentials.SpringBootEssentials.util.DateUtil;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import static java.util.Arrays.asList;
 import java.util.List;
 import javax.validation.Valid;
@@ -100,6 +103,11 @@ public class StudentEndpoint {
 //    }
     
     @GetMapping(path = "protected/students")
+    @ApiOperation(value = "Return a list with all students", response = Student[].class)
+//    @ApiImplicitParams({
+//        @ApiImplicitParam(name = "Authorization", value = "Bearer token", 
+//                required = true, dataType = "string", paramType = "header")
+//    })
 //    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<?> listAll(Pageable pageable) {
         //System.out.println(studentDAO.findAll()); // Para ver os resultados do Mock
