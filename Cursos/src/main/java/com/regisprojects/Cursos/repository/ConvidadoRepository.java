@@ -6,6 +6,7 @@
 package com.regisprojects.Cursos.repository;
 
 import com.regisprojects.Cursos.models.Convidado;
+import com.regisprojects.Cursos.models.Evento;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -14,6 +15,6 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface ConvidadoRepository extends CrudRepository<Convidado, String>{
     
-    
+    Iterable<Convidado> findByEvento(Evento evento);
     
 }
