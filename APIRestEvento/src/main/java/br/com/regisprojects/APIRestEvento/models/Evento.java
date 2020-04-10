@@ -5,18 +5,21 @@
  */
 package br.com.regisprojects.APIRestEvento.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.hateoas.ResourceSupport;
 
 /**
  *
  * @author user
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
-public class Evento {
+public class Evento extends ResourceSupport{
     
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
