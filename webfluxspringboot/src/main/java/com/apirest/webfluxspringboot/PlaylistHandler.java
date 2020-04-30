@@ -21,7 +21,7 @@ import static org.springframework.web.reactive.function.BodyInserters.fromPublis
  *
  * @author user
  */
-@Component
+//@Component
 public class PlaylistHandler {
     
     @Autowired
