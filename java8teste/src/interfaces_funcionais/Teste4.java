@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author user
  */
-public class Teste3 {
+public class Teste4 {
     
     public static void main(String[] args) {
         Cliente1 c1 = new Cliente1("Regis", true, "123");
