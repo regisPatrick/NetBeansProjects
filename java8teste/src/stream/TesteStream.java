@@ -30,7 +30,7 @@ public class TesteStream {
         
 //        Stream<Integer> stream1 = clientes.stream().map(c -> c.getPontos());
 
-        IntStream stream1 = clientes.stream().mapToInt(c -> c.getPontos());
+//        IntStream stream1 = clientes.stream().mapToInt(c -> c.getPontos());
         
 //        LongStream stream1 = clientes.stream().mapToLong(c -> c.getPontos());
         
