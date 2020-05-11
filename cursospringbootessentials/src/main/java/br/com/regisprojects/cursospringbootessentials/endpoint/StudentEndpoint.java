@@ -13,22 +13,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import static java.util.Arrays.asList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMethod;
 /**
  *
  * @author user
  */
 @RestController
-@RequestMapping("student")
+@RequestMapping("students")
 public class StudentEndpoint {
     
-    @Autowired
-    private DateUtil dateUtil;
+    private final DateUtil dateUtil;
     
-    @RequestMapping(method = RequestMethod.GET, path = "/list")
-    public List<Student> listAll(){
+    @Autowired
+    public StudentEndpoint(DateUtil dateUtil) {
+        this.dateUtil = dateUtil;
+    }
+    
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<?> listAll(){
 //        System.out.println("------------" + dateUtil.formatLocalDateTimeToDatabaseStyle(LocalDateTime.now()));
-        return asList(new Student("Deku"), new Student("Todoroki"));
+        return new ResponseEntity<>(Student.studentList, HttpStatus.OK);
     }
     
 }
