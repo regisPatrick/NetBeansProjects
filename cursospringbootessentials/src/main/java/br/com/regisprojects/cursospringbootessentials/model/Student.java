@@ -38,7 +38,7 @@ public class Student {
     }
     
     private static void studentRepository(){
-        studentList = new ArrayList<>(asList(new Student("Deku"), new Student("Todoroki")));
+        studentList = new ArrayList<>(asList(new Student(1, "Deku"), new Student(2, "Todoroki")));
     }
 
     public String getName() {
@@ -55,6 +55,31 @@ public class Student {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 23 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Student other = (Student) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
     }
     
 }
