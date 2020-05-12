@@ -28,6 +28,10 @@ public class FilmeController {
     @GetMapping("/{codigo}")
     public ResponseEntity<Filme> obterFilme(@PathVariable Long codigo){
         
+        if(codigo < 0){
+            return ResponseEntity.badRequest().build();
+        }
+        
         Filme filme = this.filmeService.obterFilme(codigo);
         
         if(filme == null){
