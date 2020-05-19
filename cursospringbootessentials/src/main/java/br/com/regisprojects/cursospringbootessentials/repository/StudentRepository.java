@@ -17,4 +17,6 @@ public interface StudentRepository extends CrudRepository<Student, Long>{
     
     List<Student> findByNameIgnoreCaseContaining(String name);
     
+    Student findStudentById(Long id);
+    
 }

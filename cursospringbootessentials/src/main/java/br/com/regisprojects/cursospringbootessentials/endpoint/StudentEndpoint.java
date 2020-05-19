@@ -6,6 +6,7 @@
 package br.com.regisprojects.cursospringbootessentials.endpoint;
 
 import br.com.regisprojects.cursospringbootessentials.error.CustomErrorType;
+import br.com.regisprojects.cursospringbootessentials.error.ResourceNotFoundException;
 import br.com.regisprojects.cursospringbootessentials.model.Student;
 import br.com.regisprojects.cursospringbootessentials.repository.StudentRepository;
 import br.com.regisprojects.cursospringbootessentials.util.DateUtil;
@@ -69,11 +70,18 @@ public class StudentEndpoint {
 //        return new ResponseEntity<>(Student.studentList.get(index), HttpStatus.OK);
 //    }
     
+//    @GetMapping(path = "/{id}")
+//    public ResponseEntity<?> getStudentById(@PathVariable("id") Long id){
+//        Student student = studentDAO.findById(id).get();
+//        if(student == null)
+//            return new ResponseEntity<>(new CustomErrorType("Student not found"), HttpStatus.NOT_FOUND);
+//        return new ResponseEntity<>(student, HttpStatus.OK);
+//    }
+    
     @GetMapping(path = "/{id}")
     public ResponseEntity<?> getStudentById(@PathVariable("id") Long id){
-        Student student = studentDAO.findById(id).get();
-        if(student == null)
-            return new ResponseEntity<>(new CustomErrorType("Student not found"), HttpStatus.NOT_FOUND);
+        verifyIfStudentExists(id);
+        Student student = studentDAO.findStudentById(id);
         return new ResponseEntity<>(student, HttpStatus.OK);
     }
     
@@ -103,6 +111,7 @@ public class StudentEndpoint {
     
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
+        verifyIfStudentExists(id);
         studentDAO.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -117,8 +126,14 @@ public class StudentEndpoint {
     
     @PutMapping
     public ResponseEntity<?> update(@RequestBody Student student){
+        verifyIfStudentExists(student.getId());
         studentDAO.save(student);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    private void verifyIfStudentExists(Long id){
+        if(studentDAO.findStudentById(id) == null)
+            throw new ResourceNotFoundException("Student not found for ID: " + id);
     }
     
 }
