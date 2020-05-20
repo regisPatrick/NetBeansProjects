@@ -13,7 +13,7 @@ public class ResourceNotFoundDetails {
     
     private String title;
     private int status;
-    private String details;
+    private String detail;
     private long timestamp;
     private String developerMessage;
 
@@ -29,8 +29,8 @@ public class ResourceNotFoundDetails {
         return status;
     }
 
-    public String getDetails() {
-        return details;
+    public String getDetail() {
+        return detail;
     }
 
     public long getTimestamp() {
@@ -41,24 +41,54 @@ public class ResourceNotFoundDetails {
         return developerMessage;
     }
     
-    public static final class ResourceNotFoundDetailsBuilder{
+    public static final class Builder{
         private String title;
         private int status;
         private String detail;
         private long timestamp;
         private String developerMessage;
         
-        private ResourceNotFoundDetailsBuilder(){
+        private Builder(){
             
         }
         
-        public static ResourceNotFoundDetailsBuilder aResourceNotFoundDetails(){
-            return new ResourceNotFoundDetailsBuilder();
+        public static Builder newBuilder(){
+            return new Builder();
         }
         
-        public ResourceNotFoundDetailsBuilder title(String title) {
+        public Builder title(String title) {
             this.title = title;
             return this;
+        }
+        
+        public Builder status(int status) {
+            this.status = status;
+            return this;
+        }
+        
+        public Builder detail(String detail){
+            this.detail = detail;
+            return this;
+        }
+        
+        public Builder timestamp(long timestamp){
+            this.timestamp = timestamp;
+            return this;
+        }
+        
+        public Builder developerMessage(String developerMessage){
+            this.developerMessage = developerMessage;
+            return this;
+        }
+        
+        public ResourceNotFoundDetails build() {
+            ResourceNotFoundDetails resourceNotFoundDetails = new ResourceNotFoundDetails();
+            resourceNotFoundDetails.developerMessage = this.developerMessage;
+            resourceNotFoundDetails.title = this.title;
+            resourceNotFoundDetails.detail = this.detail;
+            resourceNotFoundDetails.timestamp = this.timestamp;
+            resourceNotFoundDetails.status = this.status;
+            return resourceNotFoundDetails;
         }
         
     }
