@@ -91,6 +91,8 @@ public class ValidationErrorDetails extends ErrorDetail {
             validationErrorDetails.setDetail(detail);
             validationErrorDetails.setTimestamp(timestamp);
             validationErrorDetails.setStatus(status);
+            validationErrorDetails.field = field;
+            validationErrorDetails.fieldMessage = fieldMessage;
             return validationErrorDetails;
         }
 

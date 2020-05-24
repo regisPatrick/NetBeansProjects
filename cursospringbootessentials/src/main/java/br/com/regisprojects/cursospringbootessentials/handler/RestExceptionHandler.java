@@ -47,14 +47,14 @@ public class RestExceptionHandler {
         ValidationErrorDetails rnfDetails = ValidationErrorDetails.Builder
                 .newBuilder()
                 .timestamp(new Date().getTime())
-                .status(HttpStatus.NOT_FOUND.value())
-                .title("Resource not found")
-                .detail(manvException.getMessage())
+                .status(HttpStatus.BAD_REQUEST.value())
+                .title("Field Validation Error")
+                .detail("Field Validation Error")
                 .developerMessage(manvException.getClass().getName())
                 .field(fields)
                 .fieldMessage(fieldMessages)
                 .build();
-        return new ResponseEntity<>(rnfDetails, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(rnfDetails, HttpStatus.BAD_REQUEST);
     }
     
 }

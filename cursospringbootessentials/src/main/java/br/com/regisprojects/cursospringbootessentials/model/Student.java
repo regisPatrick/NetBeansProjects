@@ -20,7 +20,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Student extends AbstractEntity{
     
 //    private int id;
-    @NotEmpty
+    @NotEmpty(message = "O campo nome do estudante é obrigatório")
     private String name;
     
     @NotEmpty
