@@ -68,7 +68,7 @@ public class ErrorDetail {
         
         }
         
-        private static Builder newBuilder(){
+        public static Builder newBuilder(){
             return new Builder();
         }
         
