@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import static java.util.Arrays.asList;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -57,8 +58,8 @@ public class StudentEndpoint {
 //    }
     
     @GetMapping
-    public ResponseEntity<?> listAll(){
-        return new ResponseEntity<>(studentDAO.findAll(), HttpStatus.OK);
+    public ResponseEntity<?> listAll(Pageable pageable){
+        return new ResponseEntity<>(studentDAO.findAll(pageable), HttpStatus.OK);
     }
     
 //    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
