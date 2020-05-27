@@ -8,12 +8,13 @@ package br.com.regisprojects.cursospringbootessentials.repository;
 import br.com.regisprojects.cursospringbootessentials.model.Student;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
  *
  * @author user
  */
-public interface StudentRepository extends CrudRepository<Student, Long>{
+public interface StudentRepository extends PagingAndSortingRepository<Student, Long>{
     
     List<Student> findByNameIgnoreCaseContaining(String name);
     
