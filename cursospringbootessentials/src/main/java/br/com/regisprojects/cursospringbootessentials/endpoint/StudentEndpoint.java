@@ -61,15 +61,15 @@ public class StudentEndpoint {
 //    }
     
 //    Com Paginação
-//    @GetMapping(path = "protected/students")
-//    public ResponseEntity<?> listAll(Pageable pageable){
-//        return new ResponseEntity<>(studentDAO.findAll(pageable), HttpStatus.OK);
-//    }
-    
     @GetMapping(path = "protected/students")
     public ResponseEntity<?> listAll(Pageable pageable){
-        return new ResponseEntity<>(studentDAO.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(studentDAO.findAll(pageable), HttpStatus.OK);
     }
+    
+//    @GetMapping(path = "protected/students")
+//    public ResponseEntity<?> listAll(Pageable pageable){
+//        return new ResponseEntity<>(studentDAO.findAll(), HttpStatus.OK);
+//    }
     
 //    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
 //    @GetMapping(path = "/{id}")

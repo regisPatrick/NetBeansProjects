@@ -5,6 +5,7 @@
  */
 package br.com.regisprojects.cursospringbootessentials.javaclient;
 
+import br.com.regisprojects.cursospringbootessentials.model.PageableResponse;
 import br.com.regisprojects.cursospringbootessentials.model.Student;
 import java.util.Arrays;
 import java.util.List;
@@ -30,11 +31,16 @@ public class JavaSpringClientTest {
         System.out.println(student);
         System.out.println(forEntity.getBody());
         
-        Student[] students = restTemplate.getForObject("/", Student[].class);
-        System.out.println(Arrays.toString(students));
-        ResponseEntity<List<Student>> exchange = restTemplate.exchange("/", HttpMethod.GET, null, 
-                new ParameterizedTypeReference<List<Student>>() {});
-        System.out.println(exchange.getBody());
+//        Student[] students = restTemplate.getForObject("/", Student[].class);
+//        System.out.println(Arrays.toString(students));
+//        ResponseEntity<List<Student>> exchange = restTemplate.exchange("/", HttpMethod.GET, null, 
+//                new ParameterizedTypeReference<List<Student>>() {});
+//        System.out.println(exchange.getBody());
+
+        ResponseEntity<PageableResponse<Student>> exchange = restTemplate.exchange("/?sort=id,desc&sort=name,asc", HttpMethod.GET, null, 
+                new ParameterizedTypeReference<PageableResponse<Student>>() {});
+        System.out.println(exchange);
+        
     }
     
 }
