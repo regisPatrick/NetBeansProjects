@@ -28,9 +28,10 @@ public class JavaSpringClientTest {
         Student studentPost = new Student();
         studentPost.setName("John Wick 2");
         studentPost.setEmail("john@pencil.com");
-        studentPost.setId(25L);
+//        studentPost.setId(25L);
         
         JavaClientDAO dao = new JavaClientDAO();
+//        System.out.println(dao.findById(111));
 //        System.out.println(dao.findById(1));
 //        System.out.println(dao.listAll());
 //        System.out.println(dao.save(studentPost));
@@ -40,7 +41,8 @@ public class JavaSpringClientTest {
 
 //        dao.update(studentPost);
 
-        dao.delete(25);
+//        dao.delete(25);
+        dao.delete(56);
         
     }
     

@@ -5,6 +5,7 @@
  */
 package br.com.regisprojects.cursospringbootessentials.javaclient;
 
+import br.com.regisprojects.cursospringbootessentials.handler.RestResponseExceptionHandler;
 import br.com.regisprojects.cursospringbootessentials.model.PageableResponse;
 import br.com.regisprojects.cursospringbootessentials.model.Student;
 import java.util.List;
@@ -26,11 +27,13 @@ public class JavaClientDAO {
     private RestTemplate restTemplate = new RestTemplateBuilder()
             .rootUri("http://localhost:8080/v1/protected/students")
             .basicAuthentication("pegasus", "123")
+            .errorHandler(new RestResponseExceptionHandler())
             .build();
 
     private RestTemplate restTemplateAdmin = new RestTemplateBuilder()
             .rootUri("http://localhost:8080/v1/admin/students")
             .basicAuthentication("pegasus", "123")
+            .errorHandler(new RestResponseExceptionHandler())
             .build();
 
     public Student findById(long id) {
