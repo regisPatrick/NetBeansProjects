@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Tela de Nome</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+         <h:form id="formPessoa">
+            
+            <h1>Olá JSF</h1>
+            <h:panelGrid columns="2">
+                <h:outputLabel id="nome" value="Nome:"/>
+                <h:inputText id="campoNome" value="#{pessoaBean.nome}"/>
+                <h:outputLabel id="sobrenome" value="Sobre Nome:"/>
+                <h:inputText id="campoSobreNome" value="#{pessoaBean.sobrenome}"/>
+                <h:outputLabel id="senha" value="Senha:"/>
+                <h:inputSecret id="campoSenha" value="#{pessoaBean.senha}"/>
+                <h:outputLabel id="texto" value="Texto:"/>
+                <h:inputTextarea id="campoTexto" value="#{pessoaBean.texto}" rows="10" cols="10"/>
+            </h:panelGrid>
+            <h:panelGrid columns="1">
+                <h:outputText value="#{pessoaBean.nomeCompleto}"/>
+            </h:panelGrid>
+            <h:panelGrid columns="1">
+                <h:commandButton value="Mostrar Nome Completo" action="#{pessoaBean.mostrarNome}"/>    
+            </h:panelGrid>
+            
+            <h:commandButton binding="#{pessoaBean.commandButton}" value="Adiciona nome na Lista" action="#{pessoaBean.addNome}"/>
+            <h:dataTable value="#{pessoaBean.nomes}" var="n">
+                <h:column>
+                    <h:outputText value="#{n}"/>
+                </h:column>
+            </h:dataTable>
+            
+        </h:form>
+    </h:body>
+</html>

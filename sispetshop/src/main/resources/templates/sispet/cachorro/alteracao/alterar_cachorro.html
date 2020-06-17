@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br" 
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>Sistema Clinica PetShop</title>
+        <!-- Meta tags Obrigatórias -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link href="../../../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link rel="stylesheet" href="../../../style/styleCss.css"/>
+
+    </head>          
+    <body>
+        <header>
+            <nav>
+                <div class="jumbotron">
+                    <h1>Alterar Cadastro de Cachorro</h1>
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a href="/cachorros" class="btn btn-primary right-align">Lista de Cachorro</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container formCachorro">
+            <form class="container" method="post">
+                <div class="col-md-12 cadastro">
+                    <h1>Dados do Cachorro</h1>
+                    <input type="text" class="form-control" th:value="${dono.cpf}" name="coddono" hidden="true"/>
+                    <div class="form-group">
+                        Nome do Cachorro: <input type="text" class="form-control" th:value="${cachorro.nome}" name="nome"/>
+                    </div>
+                    <div class="form-group">
+                        Raça: <input type="text" class="form-control" th:value="${cachorro.raca}" name="raca"/>
+                    </div>
+                    <div class="form-group">
+                        Peso: <input type="text" class="form-control" th:value="${cachorro.peso}" name="peso"/>
+                    </div>
+                    <div class="form-group">
+                        Altura: <input type="text" class="form-control" th:value="${cachorro.altura}" name="altura"/>
+                    </div>
+                    <div class="form-group">
+                        Vacina: <input type="text" class="form-control" th:value="${cachorro.vacina}" name="vacina"/>
+                    </div>
+                    <div class="form-group">
+                        Histórico: <input type="text" class="form-control" th:value="${cachorro.historico}" name="historico"/>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="submit">Alterar</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+
+        <div th:each="cachorro : ${cachorro}" class="container detalhesCachorro">
+            <p>Nome do Cachorro: <span th:text="${cachorro.nome}"></span></p>
+            <p>Raça: <span th:text="${cachorro.raca}"></span></p>
+            <p>Peso: <span th:text="${cachorro.peso}"></span></p>
+            <p>Altura: <span th:text="${cachorro.altura}"></span></p>
+            <p>Vacina: <span th:text="${cachorro.vacina}"></span></p>
+            <p>Histórico: <span th:text="${cachorro.Historico}"></span></p>
+        </div>
+
+        <div th:each="dono : ${dono}" class="container detalhesCachorro">
+            <p>CPF: <span th:text="${dono.cpf}"></span></p>
+            <p>Nome do Dono: <span th:text="${dono.nome}"></span></p>
+            <p>Endereço: <span th:text="${dono.endereco}"></span></p>
+            <p>Telefone: <span th:text="${dono.telefone}"></span></p>
+            <p>E-mail: <span th:text="${dono.email}"></span></p>
+        </div>
+        
+        <p class="botaoCachorro">Clique no Botão a seguir caso queira ir para a <strong>Lista de Cachorros</strong>: <a class="btn btn-primary btn-small" th:href="${(#mvc.url('VC#listaCachorros').arg(0, cachorro.dono.cpf)).build()}">Cachorros</a></p>
+
+
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    </body>    
+</html>
+
+

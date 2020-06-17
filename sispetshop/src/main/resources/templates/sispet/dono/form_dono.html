@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+    <head>
+        <title>Sistema Clinica PetShop</title>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="../../materialize/css/materialize.min.css"  media="screen,projection"/>
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <link rel="stylesheet" href="../../style/styleCss.css"/>
+    </head>    
+    <body>
+        <header>
+            <nav>
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo">Cadastro de Donos</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="/clinicas" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista de Clinicas</a></li>
+
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <h3>Cadastro de Dono:</h3>
+        
+        <div class="container formDono">    
+            <form th:object="${dono}" method="post">
+                CPF: <input type="text" value="" name="cpf" placeholder="CPF"/>
+                Nome do Dono: <input type="text" value="" name="nome" placeholder="Nome Completo"/>
+                Endereço: <input type="text" value="" name="endereco" placeholder="Endereco"/>
+                Telefone: <input type="text" value="" name="telefone" placeholder="Telefone"/>
+                E-mail: <input type="text" value="" name="email" placeholder="E-mail"/>
+                <button class="waves-effect waves-light btn" type="submit">Adicionar</button>
+            </form>
+        </div>
+
+        <p class="botaoCachorro">Clique no Botão a seguir caso queira ir para a <strong>Lista de Donos</strong>: <a class="waves-effect waves-light btn-small" href="/donos"><i class="material-icons left">pets</i></a></p>
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <!--JavaScript at end of body for optimized loading-->
+        <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+    </body>    
+</html>
+
+
+

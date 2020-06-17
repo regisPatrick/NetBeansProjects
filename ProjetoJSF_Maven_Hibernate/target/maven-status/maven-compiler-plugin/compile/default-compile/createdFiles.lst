@@ -1,0 +1,6 @@
+br\com\regisprojects\projetojsf_maven_hibernate\model\dao\PessoaDAO.class
+br\com\regisprojects\projetojsf_maven_hibernate\model\dao\GenericoDAO.class
+br\com\regisprojects\projetojsf_maven_hibernate\model\entidades\Pessoa.class
+br\com\regisprojects\projetojsf_maven_hibernate\connection\ConnectionFactory.class
+br\com\regisprojects\projetojsf_maven_hibernate\model\entidades\I_EntidadeBase.class
+br\com\regisprojects\projetojsf_maven_hibernate\model\managedbean\PessoaBean.class

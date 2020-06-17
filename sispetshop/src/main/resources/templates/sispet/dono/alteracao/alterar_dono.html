@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Sistema Clinica PetShop</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="../../../materialize/css/materialize.min.css"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../../../style/styleCss.css"/>
+    
+    
+</head>          
+<body>
+    <header>
+            <nav>
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo">Alterar Cadastro de Dono:</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="/clinicas" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista de Clinicas</a></li>
+                        
+                    </ul>
+                </div>
+            </nav>
+        </header>
+    
+    <div class="container formClinica">
+        <form class="container" method="post">
+            
+                <h5>Dados de Dono:</h5>    
+                <input type="text" th:value="${dono.cpf}" name="cpf" hidden="true"/>
+                
+                Nome do Dono: <input type="text" th:value="${dono.nome}" name="nome"/>
+                    
+                Endereço: <input type="text" th:value="${dono.endereco}" name="endereco"/>
+                
+            <div class="row">
+                <div class="input-field col s6">
+                    Telefone: <input type="text" th:value="${dono.telefone}" name="telefone"/>
+                        
+                </div>
+                <div class="input-field col s6">
+                    E-mail: <input type="text" th:value="${dono.email}" name="email"/>
+                    
+                </div>
+            </div>
+            <button class="waves-effect waves-light btn" type="submit">Alterar</button>
+            
+        </form>
+        </div>
+    
+    
+        <div th:each="dono : ${dono}" class="container detalhesClinica">
+            <p>CPF: <span th:text="${dono.cpf}"></span></p>
+            <p>Nome do Dono: <span th:text="${dono.nome}"></span></p>
+            <p>Endereço: <span th:text="${dono.endereco}"></span></p>
+            <p>Telefone: <span th:text="${dono.telefone}"></span></p>
+            <p>E-mail: <span th:text="${dono.email}"></span></p>
+        </div>
+  
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!--JavaScript at end of body for optimized loading-->
+  <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+  
+</body>    
+</html>
+
+
+

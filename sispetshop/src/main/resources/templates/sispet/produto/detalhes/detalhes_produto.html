@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>SisPetShop</title>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="../../../materialize/css/materialize.min.css"  media="screen,projection"/>
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <link rel="stylesheet" href="../../../style/styleCss.css"/>
+    </head>    
+    <body>
+        <header>
+            <nav>
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo">Produto</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="/clinicas" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista de Clinicas Pet</a></li>
+                        
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        
+        <div th:each="produto : ${produto}" class="container detalhesProduto">
+            <h5>Detalhes do Produto</h5>    
+            <div class="row">
+                <p>Nome do Produto: <span th:text="${produto.nome}"></span></p>
+                <p>Categoria: <span th:text="${produto.categoria}"></span></p>
+                <p>Marca: <span th:text="${produto.marca}"></span></p>
+                <p>Preço: <span th:text="${produto.preco}"></span></p>
+                <p>Estoque: <span th:text="${produto.estoque}"></span></p>
+            </div>
+        </div>
+        
+        <p>Clique no link a seguir caso queira voltar para a <strong>Lista de Produtos</strong> da Clinica Pet Shop: <a th:href="${(#mvc.url('PC#listaProdutos').arg(0, produto.clinica.id)).build()}"><span th:text="${produto.clinica.nome}"></span></a></p>
+        
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+    </body>    
+</html>
+
+
+
+

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>SisPetShop</title>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="../../../materialize/css/materialize.min.css"  media="screen,projection"/>
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <link rel="stylesheet" href="../../../style/styleCss.css"/>
+    </head>    
+    <body>
+        <header>
+            <nav>
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo">Detalhes da Consulta</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="/clinicas" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista de Clinicas Pet</a></li>
+                        
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        
+        <div th:each="consulta : ${consulta}" class="container detalhesConsulta">
+            <h5>Detalhes da Consulta</h5>    
+            <div class="row">
+                <p>Data: <span th:text="${consulta.data}"></span></p>
+                <p>Horário: <span th:text="${consulta.horario}"></span></p>
+                <p>Nome do cachorro: <span th:text="${consulta.cachorro.nome}"></span></p>
+                <p>Nome do Veterinário: <span th:text="${consulta.veterinario.nome}"></span></p>
+            </div>
+        </div>
+        
+        <p>Clique no link a seguir caso queira voltar para a <strong>Lista de Consultas</strong> da Clinica Pet Shop: <a th:href="${(#mvc.url('VC#listaConsultas').arg(0, consulta.veterinario.crmv)).build()}"><span th:text="${consulta.veterinario.clinica.nome}"></span></a></p>
+        
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+    </body>    
+</html>
+
+
+
+
