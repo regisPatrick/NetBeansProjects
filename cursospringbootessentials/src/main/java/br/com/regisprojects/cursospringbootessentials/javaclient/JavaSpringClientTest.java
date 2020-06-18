@@ -42,7 +42,7 @@ public class JavaSpringClientTest {
 //        dao.update(studentPost);
 
 //        dao.delete(25);
-        dao.delete(56);
+        dao.delete(14);
         
     }
     
