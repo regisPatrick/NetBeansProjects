@@ -31,6 +31,17 @@ public class Exer06 {
     
     private static void criarContatosDinamicamente(int quantidade, Lista<Contato> lista){
         
+        Contato contato;
+        
+        for(int i = 1; i <= quantidade; i++){
+            contato = new Contato();
+            contato.setNome("Contato " + i);
+            contato.setTelefone("1111-2222" + i);
+            contato.setEmail("contato" + i + "@email.com");
+            
+            lista.adiciona(contato);
+        }
+        
     }
     
 }
