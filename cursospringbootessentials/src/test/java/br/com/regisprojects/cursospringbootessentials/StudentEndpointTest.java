@@ -5,11 +5,15 @@
  */
 package br.com.regisprojects.cursospringbootessentials;
 
+import br.com.regisprojects.cursospringbootessentials.model.Student;
 import br.com.regisprojects.cursospringbootessentials.repository.StudentRepository;
 import java.time.Instant;
+import static java.util.Arrays.asList;
+import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.BDDMockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -56,9 +60,42 @@ public class StudentEndpointTest {
     
     @Test
     public void listStudentsWhenUserNameAndPasswordAreIncorrectShouldReturnStatusCode401(){
+        System.out.println(port);
         restTemplate = restTemplate.withBasicAuth("1", "1");
         ResponseEntity<String> response = restTemplate.getForEntity("/v1/protected/students/", String.class);
         Assertions.assertThat(response.getStatusCodeValue()).isEqualTo(401);
+    }
+    
+    @Test
+    public void getStudentsByIdWhenUserNameAndPasswordAreIncorrectShouldReturnStatusCode401(){
+        System.out.println(port);
+        restTemplate = restTemplate.withBasicAuth("1", "1");
+        ResponseEntity<String> response = restTemplate.getForEntity("/v1/protected/students/1", String.class);
+        Assertions.assertThat(response.getStatusCodeValue()).isEqualTo(401);
+    }
+    
+    @Test
+    public void listStudentsWhenUserNameAndPasswordAreCorrectShouldReturnStatusCode200(){
+        List<Student> students = asList(new Student(1L, "Legolas", "legolas@lotr.com"),
+                new Student(2L, "Aragorn", "aragorn@lotr.com"));
+        
+        BDDMockito.when(studentRepository.findAll()).thenReturn(students);
+        ResponseEntity<String> response = restTemplate.getForEntity("/v1/protected/students/", String.class);
+        Assertions.assertThat(response.getStatusCodeValue()).isEqualTo(200);
+    }
+    
+    @Test
+    public void getStudentsByIdWhenUserNameAndPasswordAreCorrectShouldReturnStatusCode200(){
+        Student student = new Student(1L, "Legolas", "legolas@lotr.com");
+        BDDMockito.when(studentRepository.findStudentById(student.getId())).thenReturn(student);
+        ResponseEntity<Student> response = restTemplate.getForEntity("/v1/protected/students/{id}", Student.class, student.getId());
+        Assertions.assertThat(response.getStatusCodeValue()).isEqualTo(200);
+    }
+    
+    @Test
+    public void getStudentsByIdWhenUserNameAndPasswordAreCorrectAndStudentDoesNotExistShouldReturnStatusCode404(){
+        ResponseEntity<Student> response = restTemplate.getForEntity("/v1/protected/students/{id}", Student.class, -1);
+        Assertions.assertThat(response.getStatusCodeValue()).isEqualTo(404);
     }
     
 }
