@@ -14,27 +14,64 @@ import java.util.Scanner;
  * @author user
  */
 public class Exer06 {
-    
+
     public static void main(String[] args) {
-        
+
         // Criação das variáveis
         Scanner scan = new Scanner(System.in);
-        
+
         // Criar o vetor com 20 de capacidade
         Lista<Contato> lista = new Lista<Contato>(20);
-        
+
         // Criar e adicionar 30 contatos
-        criarContatosDinamicamente(5, lista);
-        
+        // criarContatosDinamicamente(5, lista);
         // criar um menu para que o usuário escolha a opção
-        
+        int opcao = 1;
+
+        while (opcao != 0) {
+            opcao = obterOpcaoMenu(scan);
+
+            switch (opcao) {
+                case 1:
+                    adicionarContatoFinal(scan, lista);
+                    break;
+                case 2:
+            }
+
+        }
+        System.out.println("Usuário digitou 0, programa terminado");
     }
-    
-    private static int obterOpcaoMenu(Scanner scan){
-        
+
+    private static void adicionarContatoFinal(Scanner scan, Lista<Contato> lista) {
+
+        System.out.println("Criando um contato, entre com as informações: ");
+        String nome = leInformacao("Entre com o nome", scan);
+        String telefone = leInformacao("Entre com o telefone", scan);
+        String email = leInformacao("Entre com o email", scan);
+
+        Contato contato = new Contato(nome, telefone, email);
+
+        lista.adiciona(contato);
+
+        System.out.println("Contato adicionado com sucesso!");
+        System.out.println(contato);
+    }
+
+    private static String leInformacao(String msg, Scanner scan) {
+
+        System.out.println(msg);
+        String entrada = scan.nextLine();
+
+        return entrada;
+    }
+
+    private static int obterOpcaoMenu(Scanner scan) {
+
         boolean entradaValida = false;
-        
-        while(!entradaValida){
+        int opcao = 0;
+        String entrada;
+
+        while (!entradaValida) {
             System.out.println("Digite a opção desejada: ");
             System.out.println("1: Adiciona contato no final do vetor");
             System.out.println("2: Adiciona contato em uma posição específica");
@@ -48,27 +85,38 @@ public class Exer06 {
             System.out.println("10: Excluir todos os contatos do vetor");
             System.out.println("11: Imprime vetor");
             System.out.println("0: Sair");
-            
-            String entrada = scan.nextLine();
-            int opcao = Integer.parseInt(entrada);
+
+            try {
+                entrada = scan.nextLine();
+                opcao = Integer.parseInt(entrada);
+
+                if (opcao >= 0 && opcao <= 11) {
+                    entradaValida = true;
+                } else {
+                    throw new Exception();
+                }
+            } catch (Exception e) {
+                System.out.println("Entrada inválida, digite novamente\n\n");
+            }
+
         }
-        
-        return 0;
+
+        return opcao;
     }
-    
-    private static void criarContatosDinamicamente(int quantidade, Lista<Contato> lista){
-        
+
+    private static void criarContatosDinamicamente(int quantidade, Lista<Contato> lista) {
+
         Contato contato;
-        
-        for(int i = 1; i <= quantidade; i++){
+
+        for (int i = 1; i <= quantidade; i++) {
             contato = new Contato();
             contato.setNome("Contato " + i);
             contato.setTelefone("1111-2222" + i);
             contato.setEmail("contato" + i + "@email.com");
-            
+
             lista.adiciona(contato);
         }
-        
+
     }
-    
+
 }
