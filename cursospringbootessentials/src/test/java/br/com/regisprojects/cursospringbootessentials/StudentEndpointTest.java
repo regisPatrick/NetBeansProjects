@@ -28,8 +28,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import static org.springframework.http.HttpMethod.DELETE;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 /**
  *
@@ -114,6 +117,19 @@ public class StudentEndpointTest {
         BDDMockito.doNothing().when(studentRepository).deleteById(1L);
         ResponseEntity<String> exchange = restTemplate.exchange("/v1/admin/students/{id}", DELETE, null, String.class, 1L);
         Assertions.assertThat(exchange.getStatusCodeValue()).isEqualTo(200);
+    }
+    
+    @Test
+    @WithMockUser(username = "xx", password = "xx", roles = {"USER", "ADMIN"})
+    public void deleteWhenUserHasRoleAdminAndStudentDoesNotExistShouldReturnStatusCode404() throws Exception{
+        Student student = new Student(1L, "Legolas", "legolas@lotr.com");
+        BDDMockito.when(studentRepository.findStudentById(student.getId())).thenReturn(student);
+        BDDMockito.doNothing().when(studentRepository).deleteById(1L);
+//        ResponseEntity<String> exchange = restTemplate.exchange("/v1/admin/students/{id}", DELETE, null, String.class, -1L);
+//        Assertions.assertThat(exchange.getStatusCodeValue()).isEqualTo(404);
+        mockMvc.perform(MockMvcRequestBuilders
+                .delete("/v1/admin/students/{id}", -1L))
+                .andExpect(MockMvcResultMatchers.status().isNotFound());
     }
     
 }
