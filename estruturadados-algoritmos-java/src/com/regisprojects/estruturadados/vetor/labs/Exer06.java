@@ -39,12 +39,29 @@ public class Exer06 {
                     adicionarContatoPosicao(scan, lista);
                     break;
                 case 3:
-                    
+                    obtemContatoPosicao(scan, lista);
                     break;
             }
 
         }
         System.out.println("Usuário digitou 0, programa terminado");
+    }
+    
+    private static void obtemContatoPosicao(Scanner scan, Lista<Contato> lista){
+        
+        int pos = leInformacaoInt("Entre com a posição a ser pesquisada", scan);
+        
+        try{
+            
+            Contato contato = lista.busca(pos);
+            
+            System.out.println("Contato existe, seguem dados: ");
+            System.out.println(contato);
+            
+        } catch (Exception e) {
+            System.out.println("Posição inválida!");
+        }
+        
     }
 
     private static void adicionarContatoFinal(Scanner scan, Lista<Contato> lista) {
