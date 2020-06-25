@@ -132,4 +132,37 @@ public class StudentEndpointTest {
                 .andExpect(MockMvcResultMatchers.status().isNotFound());
     }
     
+    @Test
+    @WithMockUser(username = "xx", password = "xx", roles = {"USER"})
+    public void deleteWhenUserDoesNotHaveRoleAdminShouldReturnStatusCode403() throws Exception{
+        Student student = new Student(1L, "Legolas", "legolas@lotr.com");
+        BDDMockito.when(studentRepository.findStudentById(student.getId())).thenReturn(student);
+        BDDMockito.doNothing().when(studentRepository).deleteById(1L);
+//        ResponseEntity<String> exchange = restTemplate.exchange("/v1/admin/students/{id}", DELETE, null, String.class, -1L);
+//        Assertions.assertThat(exchange.getStatusCodeValue()).isEqualTo(404);
+        mockMvc.perform(MockMvcRequestBuilders
+                .delete("/v1/admin/students/{id}", -1L))
+                .andExpect(MockMvcResultMatchers.status().isForbidden());
+    }
+    
+    @Test
+    public void createWhenNameIsNullShouldReturnStatusCode400BadRequest() throws Exception{
+        Student student = new Student(1L, null, "legolas@lotr.com");
+        BDDMockito.when(studentRepository.findStudentById(student.getId())).thenReturn(student);
+        BDDMockito.when(studentRepository.save(student)).thenReturn(student);
+        ResponseEntity<String> response = restTemplate.postForEntity("/v1/admin/students/", student, String.class);
+        Assertions.assertThat(response.getStatusCodeValue()).isEqualTo(400);
+        Assertions.assertThat(response.getBody()).contains("fieldMessage", "O campo nome do estudante é obrigatório");
+    }
+    
+    @Test
+    public void createShouldPersistDataAndReturnStatusCode200() throws Exception{
+        Student student = new Student(1L, "Legolas", "legolas@lotr.com");
+        BDDMockito.when(studentRepository.findStudentById(student.getId())).thenReturn(student);
+        BDDMockito.when(studentRepository.save(student)).thenReturn(student);
+        ResponseEntity<Student> response = restTemplate.postForEntity("/v1/admin/students/", student, Student.class);
+        Assertions.assertThat(response.getStatusCodeValue()).isEqualTo(200);
+        Assertions.assertThat(response.getBody().getId()).isNotNull();
+    }
+    
 }
