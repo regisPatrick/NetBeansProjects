@@ -41,10 +41,78 @@ public class Exer06 {
                 case 3:
                     obtemContatoPosicao(scan, lista);
                     break;
+                case 4:
+                    obtemContato(scan, lista);
+                    break;
+                case 5:
+                    pesquisarUltimoIndice(scan, lista);
+                    break;
+                case 6:
+                    
+                    break;
+                case 7:
+                    
+                    break;
+                case 8:
+                    
+                    break;
+                case 9:
+                    
+                    break;
+                case 10:
+                    
+                    break;
+                case 11:
+                    
+                    break;    
             }
 
         }
         System.out.println("Usuário digitou 0, programa terminado");
+    }
+    
+    private static void pesquisarUltimoIndice(Scanner scan, Lista<Contato> lista){
+        
+        int pos = leInformacaoInt("Entre com a posição a ser pesquisada", scan);
+        
+        try{
+            
+            Contato contato = lista.busca(pos);
+            
+            System.out.println("Contato existe, seguem dados: ");
+            System.out.println(contato);
+         
+            System.out.println("Fazendo pesquisa do último índice do contato encontrado: ");
+            pos = lista.ultimoIndice(contato);
+            
+            System.out.println("Contato encontrado na posição " + pos);
+            
+        } catch (Exception e) {
+            System.out.println("Posição inválida!");
+        }
+        
+    }
+    
+    private static void obtemContato(Scanner scan, Lista<Contato> lista){
+        
+        int pos = leInformacaoInt("Entre com a posição a ser pesquisada", scan);
+        
+        try{
+            
+            Contato contato = lista.busca(pos);
+            
+            System.out.println("Contato existe, seguem dados: ");
+            System.out.println(contato);
+         
+            System.out.println("Fazendo pesquisa do contato encontrado: ");
+            pos = lista.busca(contato);
+            
+            System.out.println("Contato encontrado na posição " + pos);
+            
+        } catch (Exception e) {
+            System.out.println("Posição inválida!");
+        }
+        
     }
     
     private static void obtemContatoPosicao(Scanner scan, Lista<Contato> lista){
