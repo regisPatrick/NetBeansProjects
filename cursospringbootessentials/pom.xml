@@ -11,8 +11,9 @@
 	<groupId>br.com.regisprojects</groupId>
 	<artifactId>cursospringbootessentials</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+        <packaging>jar</packaging>
 	<name>cursospringbootessentials</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Curso SpringBoot Essentials</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -72,10 +73,14 @@
 	</dependencies>
 
 	<build>
+            <finalName>springbootessentials</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+                                <configuration>
+                                    <executable>true</executable>
+                                </configuration>
 			</plugin>
 		</plugins>
 	</build>
