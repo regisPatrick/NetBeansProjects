@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  * @author user
  */
-@Controller
+//@Controller
 public class IndexController {
     
     @RequestMapping("/")
