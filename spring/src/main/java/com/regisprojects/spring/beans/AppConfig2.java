@@ -5,23 +5,19 @@
  */
 package com.regisprojects.spring.beans;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 /**
  *
  * @author user
  */
-public class Mundo {
+@Configuration
+public class AppConfig2 {
     
-    @Value("Hola Mundo!")
-    private String saludo;
-
-    public String getSaludo() {
-        return saludo;
-    }
-
-    public void setSaludo(String saludo) {
-        this.saludo = saludo;
+    @Bean
+    public Mundo marte(){
+        return new Mundo();
     }
     
 }

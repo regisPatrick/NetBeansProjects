@@ -5,9 +5,12 @@
  */
 package com.regisprojects.spring;
 
+import com.regisprojects.spring.beans.AppConfig;
+import com.regisprojects.spring.beans.AppConfig2;
 import com.regisprojects.spring.beans.Mundo;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -21,8 +24,16 @@ public class App {
 //        Mundo m = new Mundo();
 //        m.getSaludo();
 
-        ApplicationContext appContext = new ClassPathXmlApplicationContext("com/regisprojects/xml/beans.xml");
-        Mundo m = (Mundo) appContext.getBean("mundo");
+//        ApplicationContext appContext = new ClassPathXmlApplicationContext("com/regisprojects/xml/beans.xml");
+
+//        ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class, AppConfig2.class);
+
+        AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
+        appContext.register(AppConfig.class);
+        appContext.register(AppConfig2.class);
+        appContext.refresh();
+        
+        Mundo m = (Mundo) appContext.getBean("marte");
                 
         System.out.println(m.getSaludo());
         
