@@ -5,8 +5,24 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
 ">
 
-    <bean id="mundo" class="com.regisprojects.spring.beans.Mundo">
+<!--    <bean id="mundo" class="com.regisprojects.spring.beans.Mundo">
         <property name="saludo" value="Hola Mundo!"></property>
+    </bean>-->
+    
+<!--    <bean id="persona" class="com.regisprojects.spring.beans.Persona">
+        <constructor-arg value="1"></constructor-arg>
+        <constructor-arg value="Regis"></constructor-arg>
+        <constructor-arg value="Saletti"></constructor-arg>
+    </bean>-->
+    
+<!--    <bean id="persona" class="com.regisprojects.spring.beans.Persona">
+        <constructor-arg type="String" value="Saletti"></constructor-arg>
+    </bean>-->
+    
+    <bean id="persona" class="com.regisprojects.spring.beans.Persona">
+        <constructor-arg index="0" value="1"></constructor-arg>
+        <constructor-arg index="2" value="Saletti"></constructor-arg>
+        <constructor-arg index="1" value="Regis"></constructor-arg>
     </bean>
     
 </beans>

@@ -8,6 +8,7 @@ package com.regisprojects.spring;
 import com.regisprojects.spring.beans.AppConfig;
 import com.regisprojects.spring.beans.AppConfig2;
 import com.regisprojects.spring.beans.Mundo;
+import com.regisprojects.spring.beans.Persona;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -28,14 +29,20 @@ public class App {
 
 //        ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class, AppConfig2.class);
 
-        AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
-        appContext.register(AppConfig.class);
-        appContext.register(AppConfig2.class);
-        appContext.refresh();
+//        AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
+//        appContext.register(AppConfig.class);
+//        appContext.register(AppConfig2.class);
+//        appContext.refresh();
+//        
+//        Mundo m = (Mundo) appContext.getBean("marte");
+//                
+//        System.out.println(m.getSaludo());
+
+        ApplicationContext appContext = new ClassPathXmlApplicationContext("com/regisprojects/xml/beans.xml");
+        Persona per = (Persona) appContext.getBean(Persona.class);
+        // ou -> Persona per = (Persona) appContext.getBean("persona");
         
-        Mundo m = (Mundo) appContext.getBean("marte");
-                
-        System.out.println(m.getSaludo());
+        System.out.println(per.getId() + " " + per.getNome() + " " + per.getApodo());
         
         ((ConfigurableApplicationContext)appContext).close();
         
