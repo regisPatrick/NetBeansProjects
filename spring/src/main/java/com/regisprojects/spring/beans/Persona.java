@@ -14,20 +14,21 @@ public class Persona {
     private int id;
     private String nome;
     private String apodo;
+    private Pais pais;
 
-    public Persona(int id, String nome, String apodo) {
-        this.id = id;
-        this.nome = nome;
-        this.apodo = apodo;
-    }
-    
-    public Persona(int id){
-        this.id = id;
-    }
-    
-    public Persona(String apodo){
-        this.apodo = apodo;
-    }
+//    public Persona(int id, String nome, String apodo) {
+//        this.id = id;
+//        this.nome = nome;
+//        this.apodo = apodo;
+//    }
+//    
+//    public Persona(int id){
+//        this.id = id;
+//    }
+//    
+//    public Persona(String apodo){
+//        this.apodo = apodo;
+//    }
 
     public int getId() {
         return id;
@@ -51,6 +52,14 @@ public class Persona {
 
     public void setApodo(String apodo) {
         this.apodo = apodo;
+    }
+
+    public Pais getPais() {
+        return pais;
+    }
+
+    public void setPais(Pais pais) {
+        this.pais = pais;
     }
     
 }

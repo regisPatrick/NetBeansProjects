@@ -42,7 +42,7 @@ public class App {
         Persona per = (Persona) appContext.getBean(Persona.class);
         // ou -> Persona per = (Persona) appContext.getBean("persona");
         
-        System.out.println(per.getId() + " " + per.getNome() + " " + per.getApodo());
+        System.out.println(per.getId() + " " + per.getNome() + " " + per.getApodo() + " " + per.getPais().getNome() + " " + per.getPais().getCiudad().getNombre());
         
         ((ConfigurableApplicationContext)appContext).close();
         
