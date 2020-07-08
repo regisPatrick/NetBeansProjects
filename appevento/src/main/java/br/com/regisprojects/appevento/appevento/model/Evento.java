@@ -6,10 +6,12 @@
 package br.com.regisprojects.appevento.appevento.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -27,6 +29,8 @@ public class Evento implements Serializable{
     private String local;
     private String data;
     private String horario;
+    @OneToMany
+    private List<Convidado> convidado;
 
     public long getCodigo() {
         return codigo;
@@ -66,6 +70,14 @@ public class Evento implements Serializable{
 
     public void setHorario(String horario) {
         this.horario = horario;
+    }
+
+    public List<Convidado> getConvidado() {
+        return convidado;
+    }
+
+    public void setConvidado(List<Convidado> convidado) {
+        this.convidado = convidado;
     }
     
 }
