@@ -6,6 +6,7 @@
 package br.com.regisprojects.appevento.appevento.repository;
 
 import br.com.regisprojects.appevento.appevento.model.Convidado;
+import br.com.regisprojects.appevento.appevento.model.Evento;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -13,5 +14,7 @@ import org.springframework.data.repository.CrudRepository;
  * @author user
  */
 public interface ConvidadoRepository extends CrudRepository<Convidado, String>{
+    
+    Iterable<Convidado> findByEvento(Evento evento);
     
 }
