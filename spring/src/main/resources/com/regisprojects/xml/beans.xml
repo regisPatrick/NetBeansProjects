@@ -41,7 +41,7 @@
         <property name="nombre" value="Lima"></property>
     </bean>-->
     
-    <bean id="persona" class="com.regisprojects.spring.beans.Persona">
+    <bean id="persona" class="com.regisprojects.spring.beans.Persona" name="personaBean2">
         <property name="pais">
             <bean id="pais" class="com.regisprojects.spring.beans.Pais">
                 <property name="nome" value="Peru"></property>
@@ -56,5 +56,7 @@
         <property name="nome" value="Regis"></property>
         <property name="apodo" value="Saletti"></property>
     </bean>
+    
+    <alias name="persona" alias="personaBean"/>
     
 </beans>

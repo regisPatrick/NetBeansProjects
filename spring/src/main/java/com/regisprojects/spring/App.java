@@ -39,8 +39,10 @@ public class App {
 //        System.out.println(m.getSaludo());
 
         ApplicationContext appContext = new ClassPathXmlApplicationContext("com/regisprojects/xml/beans.xml");
-        Persona per = (Persona) appContext.getBean(Persona.class);
+//        Persona per = (Persona) appContext.getBean(Persona.class);
         // ou -> Persona per = (Persona) appContext.getBean("persona");
+        
+        Persona per = (Persona) appContext.getBean("personaBean2"); // Usando Alias
         
         System.out.println(per.getId() + " " + per.getNome() + " " + per.getApodo() + " " + per.getPais().getNome() + " " + per.getPais().getCiudad().getNombre());
         
