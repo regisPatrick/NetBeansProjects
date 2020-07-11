@@ -14,7 +14,7 @@ import java.util.List;
 public class Pais {
 
     private String nome;
-    private List<Ciudad> ciudades;
+//    private List<Ciudad> ciudades;
 
     public String getNome() {
         return nome;
@@ -24,12 +24,12 @@ public class Pais {
         this.nome = nome;
     }
 
-    public List<Ciudad> getCiudades() {
-        return ciudades;
-    }
-
-    public void setCiudades(List<Ciudad> ciudades) {
-        this.ciudades = ciudades;
-    }
+//    public List<Ciudad> getCiudades() {
+//        return ciudades;
+//    }
+//
+//    public void setCiudades(List<Ciudad> ciudades) {
+//        this.ciudades = ciudades;
+//    }
 
 }

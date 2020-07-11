@@ -49,17 +49,25 @@ public class App {
 //        
 //        ((ConfigurableApplicationContext)appContext).close();
 //        
+//        ApplicationContext appContext = new ClassPathXmlApplicationContext("com/regisprojects/xml/beans.xml");
+//        
+//        Persona per = (Persona) appContext.getBean("personaBean2"); // Usando Alias
+//        
+//        String nombresCiudades = "";
+//        
+//        for (Ciudad ciu : per.getPais().getCiudades()){
+//            nombresCiudades += ciu.getNombre() + " - ";
+//        }
+//        
+//        System.out.println(per.getId() + " " + per.getNome() + " " + per.getApodo() + " " + per.getPais().getNome() + " " + nombresCiudades);
+//        
+//        ((ConfigurableApplicationContext)appContext).close();
+
         ApplicationContext appContext = new ClassPathXmlApplicationContext("com/regisprojects/xml/beans.xml");
         
-        Persona per = (Persona) appContext.getBean("personaBean2"); // Usando Alias
+        Persona per = (Persona) appContext.getBean("persona");
         
-        String nombresCiudades = "";
-        
-        for (Ciudad ciu : per.getPais().getCiudades()){
-            nombresCiudades += ciu.getNombre() + " - ";
-        }
-        
-        System.out.println(per.getId() + " " + per.getNome() + " " + per.getApodo() + " " + per.getPais().getNome() + " " + nombresCiudades);
+        System.out.println(per.getId() + " " + per.getNome() + " " + per.getApodo() + " " + per.getPais().getNome() + " " + per.getCiudad().getNombre());
         
         ((ConfigurableApplicationContext)appContext).close();
         

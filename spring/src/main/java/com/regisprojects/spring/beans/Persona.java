@@ -15,6 +15,7 @@ public class Persona {
     private String nome;
     private String apodo;
     private Pais pais;
+    private Ciudad ciudad;
 
 //    public Persona(int id, String nome, String apodo) {
 //        this.id = id;
@@ -60,6 +61,14 @@ public class Persona {
 
     public void setPais(Pais pais) {
         this.pais = pais;
+    }
+
+    public Ciudad getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(Ciudad ciudad) {
+        this.ciudad = ciudad;
     }
     
 }
