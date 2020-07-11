@@ -7,6 +7,7 @@ package com.regisprojects.spring;
 
 import com.regisprojects.spring.beans.AppConfig;
 import com.regisprojects.spring.beans.AppConfig2;
+import com.regisprojects.spring.beans.Ciudad;
 import com.regisprojects.spring.beans.Mundo;
 import com.regisprojects.spring.beans.Persona;
 import org.springframework.context.ApplicationContext;
@@ -38,13 +39,27 @@ public class App {
 //                
 //        System.out.println(m.getSaludo());
 
-        ApplicationContext appContext = new ClassPathXmlApplicationContext("com/regisprojects/xml/beans.xml");
+//        ApplicationContext appContext = new ClassPathXmlApplicationContext("com/regisprojects/xml/beans.xml");
 //        Persona per = (Persona) appContext.getBean(Persona.class);
         // ou -> Persona per = (Persona) appContext.getBean("persona");
         
+//        Persona per = (Persona) appContext.getBean("personaBean2"); // Usando Alias
+//        
+//        System.out.println(per.getId() + " " + per.getNome() + " " + per.getApodo() + " " + per.getPais().getNome() + " " + per.getPais().getCiudad().getNombre());
+//        
+//        ((ConfigurableApplicationContext)appContext).close();
+//        
+        ApplicationContext appContext = new ClassPathXmlApplicationContext("com/regisprojects/xml/beans.xml");
+        
         Persona per = (Persona) appContext.getBean("personaBean2"); // Usando Alias
         
-        System.out.println(per.getId() + " " + per.getNome() + " " + per.getApodo() + " " + per.getPais().getNome() + " " + per.getPais().getCiudad().getNombre());
+        String nombresCiudades = "";
+        
+        for (Ciudad ciu : per.getPais().getCiudades()){
+            nombresCiudades += ciu.getNombre() + " - ";
+        }
+        
+        System.out.println(per.getId() + " " + per.getNome() + " " + per.getApodo() + " " + per.getPais().getNome() + " " + nombresCiudades);
         
         ((ConfigurableApplicationContext)appContext).close();
         

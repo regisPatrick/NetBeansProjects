@@ -5,6 +5,8 @@
  */
 package com.regisprojects.spring.beans;
 
+import java.util.List;
+
 /**
  *
  * @author user
@@ -12,7 +14,7 @@ package com.regisprojects.spring.beans;
 public class Pais {
 
     private String nome;
-    private Ciudad ciudad;
+    private List<Ciudad> ciudades;
 
     public String getNome() {
         return nome;
@@ -22,12 +24,12 @@ public class Pais {
         this.nome = nome;
     }
 
-    public Ciudad getCiudad() {
-        return ciudad;
+    public List<Ciudad> getCiudades() {
+        return ciudades;
     }
 
-    public void setCiudad(Ciudad ciudad) {
-        this.ciudad = ciudad;
+    public void setCiudades(List<Ciudad> ciudades) {
+        this.ciudades = ciudades;
     }
-    
+
 }
