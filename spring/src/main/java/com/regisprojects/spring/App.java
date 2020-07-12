@@ -63,11 +63,24 @@ public class App {
 //        
 //        ((ConfigurableApplicationContext)appContext).close();
 
+//        ApplicationContext appContext = new ClassPathXmlApplicationContext("com/regisprojects/xml/beans.xml");
+//        
+//        Persona per = (Persona) appContext.getBean("persona");
+//        
+//        System.out.println(per.getId() + " " + per.getNome() + " " + per.getApodo() + " " + per.getPais().getNome() + " " + per.getCiudad().getNombre());
+//        
+//        ((ConfigurableApplicationContext)appContext).close();
+
         ApplicationContext appContext = new ClassPathXmlApplicationContext("com/regisprojects/xml/beans.xml");
         
         Persona per = (Persona) appContext.getBean("persona");
+        Persona per2 = (Persona) appContext.getBean("persona");
         
         System.out.println(per.getId() + " " + per.getNome() + " " + per.getApodo() + " " + per.getPais().getNome() + " " + per.getCiudad().getNombre());
+        System.out.println(per2.getId() + " " + per2.getNome() + " " + per2.getApodo() + " " + per2.getPais().getNome() + " " + per2.getCiudad().getNombre());
+
+        System.out.println(per);
+        System.out.println(per2);
         
         ((ConfigurableApplicationContext)appContext).close();
         
