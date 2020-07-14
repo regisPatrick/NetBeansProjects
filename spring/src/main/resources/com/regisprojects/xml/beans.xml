@@ -155,7 +155,23 @@
         <property name="nombre" value="Lima"></property>
     </bean>-->
     
-    <bean id="persona" class="com.regisprojects.spring.beans.Persona" autowire="byName" scope="prototype">
+<!--    <bean id="persona" class="com.regisprojects.spring.beans.Persona" autowire="byName" scope="prototype">
+        <property name="pais" ref="pais"></property>
+        <property name="ciudad" ref="ciudad"></property>
+        <property name="id" value="1"></property>
+        <property name="nome" value="Regis"></property>
+        <property name="apodo" value="Saletti"></property>
+    </bean>
+    
+    <bean id="pais" class="com.regisprojects.spring.beans.Pais">
+        <property name="nome" value="Peru"></property>
+    </bean>
+    
+    <bean id="ciudad" class="com.regisprojects.spring.beans.Ciudad">
+        <property name="nombre" value="Lima"></property>
+    </bean>-->
+    
+    <bean id="persona" class="com.regisprojects.spring.beans.Persona" autowire="byName" scope="singleton" lazy-init="true">
         <property name="pais" ref="pais"></property>
         <property name="ciudad" ref="ciudad"></property>
         <property name="id" value="1"></property>
