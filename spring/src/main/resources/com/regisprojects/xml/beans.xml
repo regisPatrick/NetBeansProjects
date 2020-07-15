@@ -2,8 +2,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
-">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd" 
+       default-init-method="init" default-destroy-method="destroy">
 
     <!--    <bean id="mundo" class="com.regisprojects.spring.beans.Mundo">
         <property name="saludo" value="Hola Mundo!"></property>
@@ -171,11 +171,35 @@
         <property name="nombre" value="Lima"></property>
     </bean>-->
     
-    <bean id="persona" class="com.regisprojects.spring.beans.Persona" autowire="byName" scope="singleton" lazy-init="true">
+<!--    <bean id="persona" class="com.regisprojects.spring.beans.Persona" autowire="byName" scope="singleton" lazy-init="true">
         <property name="pais" ref="pais"></property>
         <property name="ciudad" ref="ciudad"></property>
         <property name="id" value="1"></property>
         <property name="nome" value="Regis"></property>
+        <property name="apodo" value="Saletti"></property>
+    </bean>
+    
+    <bean id="pais" class="com.regisprojects.spring.beans.Pais">
+        <property name="nome" value="Peru"></property>
+    </bean>
+    
+    <bean id="ciudad" class="com.regisprojects.spring.beans.Ciudad">
+        <property name="nombre" value="Lima"></property>
+    </bean>-->
+    
+<!--    <bean id="persona" class="com.regisprojects.spring.beans.Persona" autowire="byName" init-method="init" destroy-method="destroy">
+        <property name="apodo" value="Saletti"></property>
+    </bean>
+    
+    <bean id="pais" class="com.regisprojects.spring.beans.Pais">
+        <property name="nome" value="Peru"></property>
+    </bean>
+    
+    <bean id="ciudad" class="com.regisprojects.spring.beans.Ciudad">
+        <property name="nombre" value="Lima"></property>
+    </bean>-->
+    
+    <bean id="persona" class="com.regisprojects.spring.beans.Persona" autowire="byName">
         <property name="apodo" value="Saletti"></property>
     </bean>
     
