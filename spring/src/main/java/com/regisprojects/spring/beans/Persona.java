@@ -5,6 +5,9 @@
  */
 package com.regisprojects.spring.beans;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 /**
  *
  * @author user
@@ -71,10 +74,12 @@ public class Persona {
         this.ciudad = ciudad;
     }
     
+    @PostConstruct
     private void init(){
         System.out.println("Antes de inicializar el bean");
     }
     
+    @PreDestroy
     private void destroy(){
         System.out.println("Bean a punto de ser destruido");
     }

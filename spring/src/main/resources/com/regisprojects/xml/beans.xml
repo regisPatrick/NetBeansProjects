@@ -3,7 +3,8 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd" 
-       default-init-method="init" default-destroy-method="destroy">
+       >
+       <!--default-init-method="init" default-destroy-method="destroy">-->
 
     <!--    <bean id="mundo" class="com.regisprojects.spring.beans.Mundo">
         <property name="saludo" value="Hola Mundo!"></property>
@@ -198,6 +199,8 @@
     <bean id="ciudad" class="com.regisprojects.spring.beans.Ciudad">
         <property name="nombre" value="Lima"></property>
     </bean>-->
+    
+    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"></bean>
     
     <bean id="persona" class="com.regisprojects.spring.beans.Persona" autowire="byName">
         <property name="apodo" value="Saletti"></property>
