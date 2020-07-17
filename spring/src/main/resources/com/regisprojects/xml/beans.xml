@@ -200,7 +200,19 @@
         <property name="nombre" value="Lima"></property>
     </bean>-->
     
-    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"></bean>
+<!--    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"></bean>
+    
+    <bean id="persona" class="com.regisprojects.spring.beans.Persona" autowire="byName">
+        <property name="apodo" value="Saletti"></property>
+    </bean>
+    
+    <bean id="pais" class="com.regisprojects.spring.beans.Pais">
+        <property name="nome" value="Peru"></property>
+    </bean>
+    
+    <bean id="ciudad" class="com.regisprojects.spring.beans.Ciudad">
+        <property name="nombre" value="Lima"></property>
+    </bean>-->
     
     <bean id="persona" class="com.regisprojects.spring.beans.Persona" autowire="byName">
         <property name="apodo" value="Saletti"></property>
