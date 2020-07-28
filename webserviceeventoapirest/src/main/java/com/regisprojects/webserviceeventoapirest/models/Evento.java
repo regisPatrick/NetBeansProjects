@@ -5,6 +5,7 @@
  */
 package com.regisprojects.webserviceeventoapirest.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +17,7 @@ import org.springframework.hateoas.ResourceSupport;
  *
  * @author user
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 public class Evento extends ResourceSupport implements Serializable{
     
