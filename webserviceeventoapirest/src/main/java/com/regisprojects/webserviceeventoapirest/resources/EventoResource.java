@@ -9,6 +9,7 @@ import com.regisprojects.webserviceeventoapirest.models.Evento;
 import com.regisprojects.webserviceeventoapirest.repository.EventoRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import java.util.ArrayList;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 /**
  *
  * @author user
@@ -34,9 +36,15 @@ public class EventoResource {
     
     @ApiOperation(value="Retorna uma lista de Eventos")
     @GetMapping(produces = "application/json")
-    public @ResponseBody Iterable<Evento> listaEventos(){
+    public @ResponseBody ArrayList<Evento> listaEventos(){
         Iterable<Evento> listaEventos = er.findAll();
-        return listaEventos;
+        ArrayList<Evento> eventos = new ArrayList<>();
+        for(Evento evento : listaEventos){
+            long codigo = evento.getCodigo();
+            evento.add(linkTo(methodOn(EventoResource.class).evento(codigo)).withSelfRel());
+            eventos.add(evento);
+        }
+        return eventos;
     }
     
     @ApiOperation(value="Retorna um Evento específico")
