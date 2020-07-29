@@ -51,6 +51,7 @@ public class EventoResource {
     @GetMapping(value = "/{codigo}", produces = "application/json")
     public @ResponseBody Evento evento(@PathVariable(value = "codigo") long codigo){
         Evento evento = er.findByCodigo(codigo);
+        evento.add(linkTo(methodOn(EventoResource.class).listaEventos()).withRel("Lista de Eventos"));
         return evento;
     }
     
