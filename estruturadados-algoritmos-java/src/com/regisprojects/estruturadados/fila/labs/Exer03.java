@@ -1,0 +1,38 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.regisprojects.estruturadados.fila.labs;
+
+import com.regisprojects.estruturadados.fila.FilaComPrioridade;
+
+/**
+ *
+ * @author user
+ */
+public class Exer03 {
+    
+    public static final int VERDE = 2;
+    public static final int AMARELO = 1;
+    public static final int VERMELHO = 0;
+    
+    public static void main(String[] args) {
+        
+        FilaComPrioridade<Pessoa> fila = new FilaComPrioridade<>();
+        fila.enfileira(new Pessoa("1", VERDE));
+        fila.enfileira(new Pessoa("2", AMARELO));
+        fila.enfileira(new Pessoa("3", VERMELHO));
+        fila.enfileira(new Pessoa("4", VERDE));
+        fila.enfileira(new Pessoa("5", VERDE));
+        fila.enfileira(new Pessoa("6", VERMELHO));
+
+        PSAtendimento atendimento = new PSAtendimento(fila);
+        
+        Thread t1 = new Thread(atendimento);
+        
+        t1.start();
+        
+    }
+    
+}
