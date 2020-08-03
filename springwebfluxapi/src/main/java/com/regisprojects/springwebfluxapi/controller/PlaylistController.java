@@ -20,7 +20,7 @@ import reactor.core.publisher.Mono;
  *
  * @author user
  */
-@RestController
+//@RestController
 public class PlaylistController {
     
     @Autowired
