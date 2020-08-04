@@ -28,10 +28,13 @@ public class Exer03 {
         fila.enfileira(new Pessoa("6", VERMELHO));
 
         PSAtendimento atendimento = new PSAtendimento(fila);
+        PSNovosPacientes pacientes = new PSNovosPacientes(fila);
         
         Thread t1 = new Thread(atendimento);
+        Thread t2 = new Thread(pacientes);
         
         t1.start();
+        t2.start();
         
     }
     
