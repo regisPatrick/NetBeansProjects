@@ -23,7 +23,7 @@ import reactor.core.publisher.Mono;
  *
  * @author user
  */
-@Component
+//@Component
 public class PlaylistHandler {
 
     @Autowired
