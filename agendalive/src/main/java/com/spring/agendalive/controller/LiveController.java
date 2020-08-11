@@ -51,7 +51,7 @@ public class LiveController {
         
     }
     
-        @GetMapping("/lives/{id}")
+    @GetMapping("/lives/{id}")
     public ResponseEntity<LiveDocument> getOneLive(@PathVariable(value="id") String id){
         Optional<LiveDocument> liveO = liveService.findById(id);
         if(!liveO.isPresent()) {
