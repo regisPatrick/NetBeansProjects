@@ -31,8 +31,24 @@ public class TesteWrapper {
         Boolean flag2 = new Boolean(true);
         Character b = new Character('b');
         
-        Integer num13 = new Integer("10000");
+        Integer num13 = new Integer("100");
         
+        Double num14 = new Double("3.5"); // Para quem usar PC Português Brasil
+ 
+        System.out.println(num13.intValue());
+        System.out.println(num13.longValue());
+        
+        Long num15 = num13.longValue();
+        
+        int num16 = Integer.parseInt("100000");
+        
+        double num17 = Double.parseDouble("3.555");
+        System.out.println(num17);
+        
+        Integer num18 = Integer.valueOf(1343);
+        System.out.println(num18);
+        
+        System.out.println(num9 == num13);
     }
     
 }
