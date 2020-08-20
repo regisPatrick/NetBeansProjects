@@ -41,6 +41,36 @@ public class ExemploPrintf {
         
         System.out.println();
         System.out.printf("%+d", valor);
+        
+        System.out.println();
+        System.out.printf("%015d", valor);
+        
+        System.out.println();
+        System.out.printf("%,d", valor); // usem ,
+        
+        System.out.println();
+        
+        int valor2 = -123456789;
+        System.out.printf("% d", valor2);
+        System.out.println();
+        System.out.printf("% d", valor);
+        
+        System.out.println();
+        
+        System.out.printf("R$%10.2f", pontoFlutuante);
+        
+        System.out.println();
+        
+        testeMaisCompleto();
+    }
+    
+    private static void testeMaisCompleto(){
+        
+        double[] precos = {10000, 123.54, 7843.567, 1, 4.56789};
+        
+        for(int i = 0; i < precos.length; i++){
+            System.out.printf("%s %02d: total de R$%,10.2f%n", "Item", i+1, precos[i]);
+        }
     }
     
 }   
