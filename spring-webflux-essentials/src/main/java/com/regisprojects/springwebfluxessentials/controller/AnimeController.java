@@ -7,6 +7,7 @@ package com.regisprojects.springwebfluxessentials.controller;
 
 import com.regisprojects.springwebfluxessentials.domain.Anime;
 import com.regisprojects.springwebfluxessentials.repository.AnimeRepository;
+import com.regisprojects.springwebfluxessentials.service.AnimeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,11 +25,11 @@ import reactor.core.publisher.Flux;
 @Slf4j
 public class AnimeController {
     
-    private final AnimeRepository animeRepository;
+    private final AnimeService animeService;
     
     @GetMapping
     public Flux<Anime> listAll(){
-        return animeRepository.findAll();
+        return animeService.findAll();
     }
     
 }
