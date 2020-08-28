@@ -10,6 +10,7 @@ import com.regisprojects.springwebfluxessentials.repository.AnimeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 /**
  *
@@ -25,4 +26,7 @@ public class AnimeService {
         return animeRepository.findAll();
     }
     
+    public Mono<Anime> findById(int id){
+        return animeRepository.findById(id);
+    }
 }

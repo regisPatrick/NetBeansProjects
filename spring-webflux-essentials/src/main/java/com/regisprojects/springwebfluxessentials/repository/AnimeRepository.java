@@ -7,6 +7,7 @@ package com.regisprojects.springwebfluxessentials.repository;
 
 import com.regisprojects.springwebfluxessentials.domain.Anime;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+import reactor.core.publisher.Mono;
 
 /**
  *
@@ -14,4 +15,5 @@ import org.springframework.data.repository.reactive.ReactiveCrudRepository;
  */
 public interface AnimeRepository extends ReactiveCrudRepository<Anime, Integer> {
     
+    Mono<Anime> findById(int id);
 }
