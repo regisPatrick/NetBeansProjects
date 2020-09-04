@@ -128,4 +128,22 @@ public class MonoTest {
 //                .verifyComplete();
     }
     
+    @Test
+    public void monoDoOnError(){
+        String name = "Regis";
+        Mono<Object> error = Mono.error(new IllegalArgumentException("Illegal argument exception"))
+                .doOnError(e -> log.error("Error message: {}", e.getMessage()))
+                // .doOnNext(s -> log.info("Executing this doOnNext"))
+                .onErrorResume(s -> {
+                    log.info("Inside on error resume");
+                    return Mono.just(name);
+                })
+                .log();
+        
+        StepVerifier.create(error)
+                .expectNext(name)
+                .verifyComplete();
+        
+    }
+    
 }
