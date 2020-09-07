@@ -5,6 +5,9 @@
  */
 package lambdas.teste;
 
+import comportamentoporparametro.Carro;
+import interfaces.CarroPredicate;
+
 /**
  *
  * @author user
@@ -20,7 +23,21 @@ public class LambdaTeste {
         // (String s) -> s.length()
         // (int a, int b) -> {System.out.println(a + b)};
         
+        CarroPredicate carroPredicate = new CarroPredicate() {
+            @Override
+            public boolean test(Carro carro) {
+                return carro.getCor().equals("verde");
+            }
+        };
+          
+        CarroPredicate carroPredicate2 = (Carro carro) -> carro.getCor().equals("verde");
         
+        System.out.println(carroPredicate.test(new Carro("verde", 2012)));
+        System.out.println(carroPredicate2.test(new Carro("verde", 2012)));
+        
+        Runnable runnable = () -> System.out.println("Dentro do run");
+        runnable.run();
+        new Thread(runnable).start();
     }
     
 }

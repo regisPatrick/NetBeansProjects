@@ -11,8 +11,11 @@ import comportamentoporparametro.Carro;
  *
  * @author user
  */
+@FunctionalInterface
 public interface CarroPredicate {
 
     boolean test(Carro carro);
+    // (parametro) -> <expressao>
+    // (Carro carro) -> carro.getCor().equals("verde");
     
 }
