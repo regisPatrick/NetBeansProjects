@@ -7,6 +7,7 @@ package lambdas.teste;
 
 import comportamentoporparametro.Carro;
 import interfaces.CarroPredicate;
+import java.util.function.Predicate;
 
 /**
  *
@@ -30,8 +31,10 @@ public class LambdaTeste {
             }
         };
           
-        CarroPredicate carroPredicate2 = (Carro carro) -> carro.getCor().equals("verde");
-        
+//        CarroPredicate carroPredicate2 = (Carro carro) -> carro.getCor().equals("verde");
+
+        Predicate<Carro> carroPredicate2 = (Carro carro) -> carro.getCor().equals("verde");
+
         System.out.println(carroPredicate.test(new Carro("verde", 2012)));
         System.out.println(carroPredicate2.test(new Carro("verde", 2012)));
         
