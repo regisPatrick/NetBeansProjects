@@ -11,6 +11,8 @@ import static java.util.Arrays.asList;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.IntPredicate;
+import java.util.function.Predicate;
 
 /**
  *
@@ -26,6 +28,10 @@ public class LambdaTeste2 {
         List<String> listCores = map(carros, (Carro c) -> c.getCor());
         System.out.println(listCores);
         System.out.println(list);
+        Predicate<Integer> pares = (Integer i) -> i % 2 == 0;
+        System.out.println(pares.test(1000));
+        IntPredicate impar = (int i) -> i % 2 == 1;
+        System.out.println(impar.test(1000));
         
     }
     
