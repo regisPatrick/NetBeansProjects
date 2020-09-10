@@ -6,9 +6,11 @@
 package lambdas.teste;
 
 import comportamentoporparametro.Carro;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import static java.util.Arrays.asList;
 import java.util.List;
+import java.util.concurrent.Callable;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.IntPredicate;
@@ -32,6 +34,8 @@ public class LambdaTeste2 {
         System.out.println(pares.test(1000));
         IntPredicate impar = (int i) -> i % 2 == 1;
         System.out.println(impar.test(1000));
+        Callable<Integer> c = () -> 100;
+        PrivilegedAction<Integer> p = () -> 100;
         
     }
     
