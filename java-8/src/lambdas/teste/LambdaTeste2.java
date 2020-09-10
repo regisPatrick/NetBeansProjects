@@ -5,6 +5,7 @@
  */
 package lambdas.teste;
 
+import comportamentoporparametro.Carro;
 import java.util.ArrayList;
 import static java.util.Arrays.asList;
 import java.util.List;
@@ -21,6 +22,9 @@ public class LambdaTeste2 {
         
         forEach(asList("Regis", "Java", "facebook.com"), (String s) -> System.out.println(s));
         List<Integer> list = map(asList("Regis", "Java", "facebook.com"), (String s) -> s.length());
+        List<Carro> carros = asList(new Carro("Preto", 2011), new Carro("Preto", 2011), new Carro("Preto", 2011));
+        List<String> listCores = map(carros, (Carro c) -> c.getCor());
+        System.out.println(listCores);
         System.out.println(list);
         
     }
