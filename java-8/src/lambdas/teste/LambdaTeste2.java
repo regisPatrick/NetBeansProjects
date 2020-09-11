@@ -15,6 +15,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.IntPredicate;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 /**
  *
@@ -36,6 +37,16 @@ public class LambdaTeste2 {
         System.out.println(impar.test(1000));
         Callable<Integer> c = () -> 100;
         PrivilegedAction<Integer> p = () -> 100;
+        Predicate<String> p1 = (String s) -> listCores.add(s);
+        p1.test("amarelo");
+        System.out.println(listCores);
+        Consumer<String> b  = s -> listCores.add(s);
+        b.accept("amarelo");
+        System.out.println(listCores);
+        Supplier<String> sup1 = () -> "oi";
+        Supplier<Carro> sup2 = () -> new Carro("Preto", 2011);
+        System.out.println(sup1.get());
+        System.out.println(sup2.get().getCor());
         
     }
     
