@@ -11,8 +11,11 @@ import java.util.ArrayList;
 import static java.util.Arrays.asList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.BiFunction;
+import java.util.function.BiPredicate;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  *
@@ -31,7 +34,8 @@ public class LambdaTeste3 {
         System.out.println(carros);
         // Reference to an instance method of Particular object
         ComparadorCarro comparadorCarro = new ComparadorCarro();
-        Collections.sort(carros, comparadorCarro::comparePorAno);
+        Supplier<ComparadorCarro> comparadorCarroSupplier = ComparadorCarro::new;
+        Collections.sort(carros, comparadorCarroSupplier.get()::comparePorAno);
         System.out.println(carros);
         // Reference to an instance method of an arbitrary object of a particular type
         List<String> nomes = asList("Regis", "Java", "Facebook.com", "Jose");
@@ -43,6 +47,17 @@ public class LambdaTeste3 {
         Function<String, Integer> stringToInteger2 = Integer::parseInt;
         System.out.println(stringToInteger.apply("1"));
         System.out.println(stringToInteger2.apply("8"));
+        BiPredicate<List<String>, String> contains = (lista, elemento) -> lista.contains(elemento);
+        BiPredicate<List<String>, String> contains2 = List::contains;
+        System.out.println(stringToInteger2.apply("10"));
+        System.out.println(contains2.test(nomes, "Regis"));
+        // Reference to a constructor
+        // Supplier<ComparadorCarro> comparadorCarroSupplier = ComparadorCarro::new;
+        // System.out.println(comparadorCarroSupplier.get());
+        BiFunction<String, Integer, Carro> carroBiFunction = (s, i) -> new Carro(s, i);
+        BiFunction<String, Integer, Carro> carroBiFunction2 = Carro::new;
+        System.out.println(carroBiFunction.apply("Rosa", 1994));
+        System.out.println(carroBiFunction2.apply("Rosa", 1994));
         
     }
     
