@@ -87,4 +87,18 @@ public class AnimeControllerIT {
                 .jsonPath("$.[0].name").isEqualTo(anime.getName());
     }
     
+    @Test
+    @DisplayName("findAll returns a flux of anime")
+    public void listAll_Flavor2_ReturnFluxOfAnime_WhenSuccessful(){
+        testClient
+                .get()
+                .uri("/animes")
+                .exchange()
+                .expectStatus().isOk()
+                .expectBodyList(Anime.class)
+                .hasSize(1)
+                .contains(anime);
+                
+    }
+    
 }
