@@ -33,6 +33,15 @@ public class Aula75 {
         byte[] ascii = {65, 66, 67, 68, 69};
         String abcde = new String(ascii);
         System.out.println(abcde);
+        
+        String bcd = new String(ascii, 1, 3);
+        System.out.println(bcd);
+        
+        String java3 = "JAVA";
+        String java4 = "JAVA";
+        
+        System.out.println(java3);
+        System.out.println(java4);
     }
     
 }
