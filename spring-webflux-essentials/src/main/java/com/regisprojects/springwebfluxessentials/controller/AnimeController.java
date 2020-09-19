@@ -8,6 +8,7 @@ package com.regisprojects.springwebfluxessentials.controller;
 import com.regisprojects.springwebfluxessentials.domain.Anime;
 import com.regisprojects.springwebfluxessentials.repository.AnimeRepository;
 import com.regisprojects.springwebfluxessentials.service.AnimeService;
+import java.util.List;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -52,6 +53,12 @@ public class AnimeController {
     @ResponseStatus(HttpStatus.CREATED)
     public Mono<Anime> save(@Valid @RequestBody Anime anime){
         return animeService.save(anime);
+    }
+    
+    @PostMapping("batch")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Flux<Anime> saveBatch(@RequestBody List<Anime> animes){
+        return animeService.saveAll(animes);
     }
     
     @PutMapping(path = "{id}")
