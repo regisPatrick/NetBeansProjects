@@ -8,6 +8,7 @@ package com.regisprojects.springwebfluxessentials.service;
 import com.regisprojects.springwebfluxessentials.domain.Anime;
 import com.regisprojects.springwebfluxessentials.repository.AnimeRepository;
 import com.regisprojects.springwebfluxessentials.util.AnimeCreator;
+import java.util.List;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.Assertions;
@@ -59,6 +60,10 @@ public class AnimeServiceTest {
         
         BDDMockito.when(animeRepositoryMock.save(AnimeCreator.createAnimeToBeSaved()))
                 .thenReturn(Mono.just(anime));
+        
+        BDDMockito.when(animeRepositoryMock
+                .saveAll(List.of(AnimeCreator.createAnimeToBeSaved(), AnimeCreator.createAnimeToBeSaved())))
+                .thenReturn(Flux.just(anime, anime));
         
         BDDMockito.when(animeRepositoryMock.delete(ArgumentMatchers.any(Anime.class)))
                 .thenReturn(Mono.empty());
@@ -120,6 +125,16 @@ public class AnimeServiceTest {
         StepVerifier.create(animeService.save(animeToBeSaved))
                 .expectSubscription()
                 .expectNext(anime)
+                .verifyComplete();
+    }
+    
+    @Test
+    @DisplayName("saveAll creates a list of anime when successful")
+    public void save_CreatesListOfAnime_WhenSuccessful(){
+        Anime animeToBeSaved = AnimeCreator.createAnimeToBeSaved();
+        StepVerifier.create(animeService.saveAll(List.of(animeToBeSaved, animeToBeSaved)))
+                .expectSubscription()
+                .expectNext(anime, anime)
                 .verifyComplete();
     }
     
