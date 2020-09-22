@@ -130,7 +130,17 @@ public class AnimeServiceTest {
     
     @Test
     @DisplayName("saveAll creates a list of anime when successful")
-    public void save_CreatesListOfAnime_WhenSuccessful(){
+    public void saveAll_CreatesListOfAnime_WhenSuccessful(){
+        Anime animeToBeSaved = AnimeCreator.createAnimeToBeSaved();
+        StepVerifier.create(animeService.saveAll(List.of(animeToBeSaved, animeToBeSaved)))
+                .expectSubscription()
+                .expectNext(anime, anime)
+                .verifyComplete();
+    }
+    
+    @Test
+    @DisplayName("saveAll returns mono error when one of the objects in the list contains null or empty name")
+    public void saveAll_CreatesListOfAnime_WhenSuccessful(){ 
         Anime animeToBeSaved = AnimeCreator.createAnimeToBeSaved();
         StepVerifier.create(animeService.saveAll(List.of(animeToBeSaved, animeToBeSaved)))
                 .expectSubscription()
