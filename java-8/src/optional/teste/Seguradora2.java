@@ -5,22 +5,13 @@
  */
 package optional.teste;
 
-import java.util.Optional;
-
 /**
  *
  * @author user
  */
-public class Seguradora {
+public class Seguradora2 {
     
     private String nome;
-
-    public Seguradora(String nome) {
-        this.nome = nome;
-    }
-
-    public Seguradora() {
-    }
 
     public String getNome() {
         return nome;
@@ -28,11 +19,6 @@ public class Seguradora {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    @Override
-    public String toString() {
-        return "Seguradora{" + "nome=" + nome + '}';
     }
     
 }

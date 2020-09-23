@@ -11,15 +11,26 @@ import java.util.Optional;
  *
  * @author user
  */
-public class Seguradora {
+public class Pessoa2 {
     
+    private Carro carro;
     private String nome;
 
-    public Seguradora(String nome) {
+    public Pessoa2(Carro carro, String nome) {
+        this.carro = carro;
         this.nome = nome;
     }
 
-    public Seguradora() {
+    public Pessoa2(String nome) {
+        this.nome = nome;
+    }
+
+    public Optional<Carro> getCarro() {
+        return Optional.ofNullable(carro);
+    }
+
+    public void setCarro(Carro carro) {
+        this.carro = carro;
     }
 
     public String getNome() {
@@ -28,11 +39,6 @@ public class Seguradora {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    @Override
-    public String toString() {
-        return "Seguradora{" + "nome=" + nome + '}';
     }
     
 }

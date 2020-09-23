@@ -21,7 +21,7 @@ public class OptionalTest2 {
     }
     
     public static String obterNomeSeguradoraOptional(Seguradora seguradora){
-        System.out.println(Optional.ofNullable(seguradora).flatMap(Seguradora::getNome).orElse("vazio"));
+//        System.out.println(Optional.ofNullable(seguradora).flatMap(Seguradora::getNome).orElse("vazio"));
         return "";
     }
     
