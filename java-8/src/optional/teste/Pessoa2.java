@@ -13,10 +13,10 @@ import java.util.Optional;
  */
 public class Pessoa2 {
     
-    private Carro carro;
+    private Carro2 carro;
     private String nome;
 
-    public Pessoa2(Carro carro, String nome) {
+    public Pessoa2(Carro2 carro, String nome) {
         this.carro = carro;
         this.nome = nome;
     }
@@ -25,11 +25,11 @@ public class Pessoa2 {
         this.nome = nome;
     }
 
-    public Optional<Carro> getCarro() {
+    public Optional<Carro2> getCarro() {
         return Optional.ofNullable(carro);
     }
 
-    public void setCarro(Carro carro) {
+    public void setCarro(Carro2 carro) {
         this.carro = carro;
     }
 

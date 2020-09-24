@@ -15,22 +15,20 @@ public class OptionalTest2 {
     
     public static void main(String[] args) {
         
-        Seguradora s = new Seguradora("SSSS");
-        System.out.println(obterNomeSeguradoraOptional(s));
+        Seguradora seguradora = new Seguradora("Regis Seguros");
+        Carro2 carro = new Carro2(seguradora, "Audi");
+        Pessoa2 p = new Pessoa2(carro, "Carlos");
+        // p = null;
+        System.out.println(obterNomeSeguradora(Optional.ofNullable(p)));
         
     }
     
-    public static String obterNomeSeguradoraOptional(Seguradora seguradora){
-//        System.out.println(Optional.ofNullable(seguradora).flatMap(Seguradora::getNome).orElse("vazio"));
-        return "";
-    }
-    
-    private static String obterNomeSeguradora(Seguradora seguradora){
-        String nome = null;
-        if(seguradora.getNome() != null){
-            // nome = seguradora.getNome();
-        }
-        return nome;
+    public static String obterNomeSeguradora(Optional<Pessoa2> p){
+        return p.flatMap(Pessoa2::getCarro)
+                   .flatMap(Carro2::getSeguradora)
+                   .map(Seguradora::getNome)
+                   .orElse("Não existe seguradora");
+        
     }
     
 }
