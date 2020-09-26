@@ -20,6 +20,8 @@ public class OptionalTest2 {
         Pessoa2 p = new Pessoa2(carro, "Carlos");
         // p = null;
         System.out.println(obterNomeSeguradora(Optional.ofNullable(p)));
+        checarNomeSeguradora(seguradora);
+        checarNomeSeguradora(seguradora);
         
     }
     
@@ -30,8 +32,12 @@ public class OptionalTest2 {
     }
     
     private static void checarNomeSeguradoraOptional(Seguradora seguradora){
-        Optional<Seguradora> seguradoraOptional = Optional.ofNullable(seguradora);
-        seguradoraOptional.filter(s -> s.getNome().equals("Regis Seguros"))
+        //Optional<Seguradora> seguradoraOptional = Optional.ofNullable(seguradora);
+        // seguradoraOptional.filter(s -> s.getNome().equals("Regis Seguros"))
+                // .ifPresent(x -> System.out.println("é o Regis"));
+                
+        Optional.ofNullable(seguradora).filter(s -> s.getNome().equals("Regis Seguros"))
+            .ifPresent(x -> System.out.println("é o Regis"));        
     }
     
     public static String obterNomeSeguradora(Optional<Pessoa2> p){
