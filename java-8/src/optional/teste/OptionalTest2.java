@@ -23,6 +23,12 @@ public class OptionalTest2 {
         
     }
     
+    private static void checarNomeSeguradora(Seguradora seguradora){
+        if (seguradora != null && seguradora.getNome().equals("Regis Seguros")){
+            System.out.println("é o Regis");
+        }
+    }
+    
     public static String obterNomeSeguradora(Optional<Pessoa2> p){
         return p.flatMap(Pessoa2::getCarro)
                    .flatMap(Carro2::getSeguradora)
