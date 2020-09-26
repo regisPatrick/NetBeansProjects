@@ -29,6 +29,11 @@ public class OptionalTest2 {
         }
     }
     
+    private static void checarNomeSeguradoraOptional(Seguradora seguradora){
+        Optional<Seguradora> seguradoraOptional = Optional.ofNullable(seguradora);
+        
+    }
+    
     public static String obterNomeSeguradora(Optional<Pessoa2> p){
         return p.flatMap(Pessoa2::getCarro)
                    .flatMap(Carro2::getSeguradora)
