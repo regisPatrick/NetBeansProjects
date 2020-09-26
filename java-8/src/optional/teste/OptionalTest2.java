@@ -31,7 +31,7 @@ public class OptionalTest2 {
     
     private static void checarNomeSeguradoraOptional(Seguradora seguradora){
         Optional<Seguradora> seguradoraOptional = Optional.ofNullable(seguradora);
-        
+        seguradoraOptional.filter(s -> s.getNome().equals("Regis Seguros"))
     }
     
     public static String obterNomeSeguradora(Optional<Pessoa2> p){
