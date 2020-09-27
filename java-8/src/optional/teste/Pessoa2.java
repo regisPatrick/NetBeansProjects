@@ -15,10 +15,19 @@ public class Pessoa2 {
     
     private Carro2 carro;
     private String nome;
+    private int idade;
 
     public Pessoa2(Carro2 carro, String nome) {
         this.carro = carro;
         this.nome = nome;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
     }
 
     public Pessoa2(String nome) {

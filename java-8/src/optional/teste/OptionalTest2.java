@@ -5,6 +5,8 @@
  */
 package optional.teste;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -22,7 +24,26 @@ public class OptionalTest2 {
         System.out.println(obterNomeSeguradora(Optional.ofNullable(p)));
         checarNomeSeguradora(seguradora);
         checarNomeSeguradora(seguradora);
+        p.setIdade(20);
+        System.out.println(obterNomeSeguradoraComIdade(p, 18));
+        Map<String, String> map = new HashMap<>();
+        System.out.println(Optional.ofNullable(map.get("kaka")));
+        stringToInt("A");
         
+    }
+    
+    /***
+     * 
+     * @param numero
+     * @return 
+     */
+    private static Optional<Integer>stringToInt(String numero){
+        try{
+            return Optional.of(Integer.parseInt(numero));
+        }catch (NumberFormatException e){
+            // e.printStackTrace();
+            return Optional.empty();
+        }
     }
     
     private static void checarNomeSeguradora(Seguradora seguradora){
@@ -46,6 +67,15 @@ public class OptionalTest2 {
                    .map(Seguradora::getNome)
                    .orElse("Não existe seguradora");
         
+    }
+    
+    private static String obterNomeSeguradoraComIdade(Pessoa2 p, int idadeMinima){
+        return Optional.ofNullable(p)
+                .filter(pessoa -> pessoa.getIdade() >= idadeMinima)
+                .flatMap(Pessoa2::getCarro)
+                .flatMap(Carro2::getSeguradora)
+                .map(Seguradora::getNome)
+                .orElse("Não existe seguradora ou a idade mínima não foi atingida");
     }
     
 }
