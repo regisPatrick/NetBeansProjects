@@ -5,8 +5,11 @@
  */
 package com.regisprojects.springwebfluxessentials.config;
 
+import com.regisprojects.springwebfluxessentials.service.WebfluxUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.ReactiveAuthenticationManager;
+import org.springframework.security.authentication.UserDetailsRepositoryReactiveAuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
@@ -43,22 +46,27 @@ public class SecurityConfig {
         //@formatter:on
     }
     
+//    @Bean
+//    public MapReactiveUserDetailsService userDetailsService(){
+//        
+//        PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+//        
+//        UserDetails user = User.withUsername("user")
+//            .password(passwordEncoder.encode("regis"))
+//            .roles("USER")
+//            .build();
+//        
+//        UserDetails admin = User.withUsername("admin")
+//            .password(passwordEncoder.encode("regis"))
+//            .roles("USER", "ADMIN")
+//            .build();
+//        
+//        return new MapReactiveUserDetailsService(user, admin);
+//    }
+    
     @Bean
-    public MapReactiveUserDetailsService userDetailsService(){
-        
-        PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        
-        UserDetails user = User.withUsername("user")
-            .password(passwordEncoder.encode("regis"))
-            .roles("USER")
-            .build();
-        
-        UserDetails admin = User.withUsername("admin")
-            .password(passwordEncoder.encode("regis"))
-            .roles("USER", "ADMIN")
-            .build();
-        
-        return new MapReactiveUserDetailsService(user, admin);
+    ReactiveAuthenticationManager authenticationManager(WebfluxUserDetailsService webfluxUserDetailsService){
+        return new UserDetailsRepositoryReactiveAuthenticationManager(webfluxUserDetailsService);
     }
     
 }
