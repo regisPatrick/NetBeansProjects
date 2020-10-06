@@ -51,17 +51,19 @@ import reactor.test.StepVerifier;
 @AutoConfigureWebTestClient
 public class AnimeControllerIT {
 
-    @Autowired
-    private WebTestClientUtil webTestClientUtil;
+//    @Autowired
+//    private WebTestClientUtil webTestClientUtil;
     
     @MockBean
     private AnimeRepository animeRepositoryMock;
+    @Autowired
+    private WebTestClient client;
 
-    private WebTestClient testClientUser;
-    
-    private WebTestClient testClientAdmin;
-    
-    private WebTestClient testClientInvalid;
+//    private WebTestClient testClientUser;
+//    
+//    private WebTestClient testClientAdmin;
+//    
+//    private WebTestClient testClientInvalid;
 
     private final Anime anime = AnimeCreator.createValidAnime();
 
@@ -74,9 +76,9 @@ public class AnimeControllerIT {
 
     @BeforeEach
     public void setup() {
-        testClientUser = webTestClientUtil.authenticateClient("allmight", "regis");
-        testClientAdmin = webTestClientUtil.authenticateClient("regis", "regis");
-        testClientInvalid = webTestClientUtil.authenticateClient("x", "x"); 
+//        testClientUser = webTestClientUtil.authenticateClient("allmight", "regis");
+//        testClientAdmin = webTestClientUtil.authenticateClient("regis", "regis");
+//        testClientInvalid = webTestClientUtil.authenticateClient("x", "x"); 
         
         BDDMockito.when(animeRepositoryMock.findAll())
                 .thenReturn(Flux.just(anime));
@@ -126,7 +128,8 @@ public class AnimeControllerIT {
 //                .jsonPath("$.[0].id").isEqualTo(anime.getId())
 //                .jsonPath("$.[0].name").isEqualTo(anime.getName());
 
-        testClientAdmin
+        // testClientAdmin
+        client
                 .get()
                 .uri("/animes")
                 .exchange()
@@ -138,9 +141,11 @@ public class AnimeControllerIT {
     
     @Test
     @DisplayName("listAll returns forbidden when user is successfully authenticate and does not have role ADMIN")
+    @WithUserDetails("allmight")
     public void listAll_ReturnsForbidden_WhenUserDoesNotHaveRoleAdmin() {
 
-        testClientUser
+        // testClientUser
+        client
                 .get()
                 .uri("/animes")
                 .exchange()
@@ -152,7 +157,8 @@ public class AnimeControllerIT {
     @DisplayName("listAll unauthorized forbidden when user is not authenticate")
     public void listAll_ReturnsAuthorized_WhenUserIsNotAuthenticated() {
 
-        testClientInvalid
+        // testClientInvalid
+        client
                 .get()
                 .uri("/animes")
                 .exchange()
