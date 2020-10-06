@@ -29,6 +29,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.BodyInserters;
@@ -51,6 +52,10 @@ import reactor.test.StepVerifier;
 @AutoConfigureWebTestClient
 public class AnimeControllerIT {
 
+    private final static String REGULAR_USER = "allmight";
+    private final static String ADMIN_USER = "regis";
+    
+    
 //    @Autowired
 //    private WebTestClientUtil webTestClientUtil;
     
@@ -118,6 +123,7 @@ public class AnimeControllerIT {
 
     @Test
     @DisplayName("listAll returns a flux of anime when user is successfully authenticate and has role ADMIN")
+    @WithUserDetails(ADMIN_USER)
     public void listAll_ReturnFluxOfAnime_WhenSuccessful() {
 //        testClientUser
 //                .get()
@@ -141,7 +147,8 @@ public class AnimeControllerIT {
     
     @Test
     @DisplayName("listAll returns forbidden when user is successfully authenticate and does not have role ADMIN")
-    @WithUserDetails("allmight")
+//    @WithUserDetails("allmight")
+    @WithUserDetails(REGULAR_USER)
     public void listAll_ReturnsForbidden_WhenUserDoesNotHaveRoleAdmin() {
 
         // testClientUser
