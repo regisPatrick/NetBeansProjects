@@ -41,6 +41,14 @@ public class StreamTest {
                 .map(Pessoa::getNome)
                 .collect(Collectors.toList());
         System.out.println(nomes2);
+        System.out.println(pessoas
+            .stream()
+            .distinct()
+            .filter(p -> p.getIdade() < 25)
+            .map(Pessoa::getNome)
+            .count());
+        pessoas.stream().forEach(System.out::println);
+        //Intermediate e Terminal
     }
     
 }

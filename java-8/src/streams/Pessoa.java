@@ -7,6 +7,7 @@ package streams;
 
 import static java.util.Arrays.asList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -27,7 +28,8 @@ public class Pessoa {
     public static List<Pessoa> bancoDePessoas(){
         return asList(
                 new Pessoa ("Regis Patrick", 22, 2000),
-                new Pessoa ("Mercy", 28, 3500),
+                new Pessoa ("Mercy", 22, 3500),
+                new Pessoa ("Mercy", 22, 3500),
                 new Pessoa ("Ana", 19, 1895),
                 new Pessoa ("Thor", 23, 1980),
                 new Pessoa ("Hulk", 35, 8000),
@@ -59,6 +61,31 @@ public class Pessoa {
 
     public void setSalario(double salario) {
         this.salario = salario;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 13 * hash + Objects.hashCode(this.nome);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pessoa other = (Pessoa) obj;
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        return true;
     }
     
 }
