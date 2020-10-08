@@ -38,6 +38,7 @@ public class StreamTest {
                 .filter(p -> p.getIdade() < 25)
                 .sorted(Comparator.comparing(Pessoa::getNome))
                 .limit(3)
+                .skip(1)
                 .map(Pessoa::getNome)
                 .collect(Collectors.toList());
         System.out.println(nomes2);
