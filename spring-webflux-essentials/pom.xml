@@ -19,9 +19,15 @@
         <blockhound.version>1.0.3.RELEASE</blockhound.version>
         <maven.compiler.source>12</maven.compiler.source>
         <maven.compiler.target>12</maven.compiler.target>
+        <springdoc-openapi-webflux-ui.version>1.4.1</springdoc-openapi-webflux-ui.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-webflux-ui</artifactId>
+            <version>${springdoc-openapi-webflux-ui.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
