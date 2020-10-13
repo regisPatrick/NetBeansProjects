@@ -33,7 +33,8 @@ public class StreamTest2 {
         String[] split = palavras.get(0).split("");
         System.out.println(Arrays.toString(split));
         List<String[]> collect1 = palavras.stream().map(p -> p.split("")).collect(Collectors.toList());
-        Stream<String> stream = Arrays.stream((String[]) palavras.toArray());
+        // Stream<String> stream = Arrays.stream((String[]) palavras.toArray());
+        Stream<Object> stream = Arrays.stream(palavras.toArray());
         List<String> collect2 = palavras.stream() // Stream<String>
                 .map(p -> p.split("")) // Stream<String[]>
                 .flatMap(Arrays::stream)// Stream<String>
