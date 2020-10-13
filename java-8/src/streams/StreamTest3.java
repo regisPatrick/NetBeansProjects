@@ -16,6 +16,9 @@ public class StreamTest3 {
     public static void main(String[] args) {
         
         List<Pessoa> pessoas = Pessoa.bancoDePessoas();
+        System.out.println(pessoas.stream().anyMatch(p -> p.getSalario() > 4000));
+        System.out.println(pessoas.stream().allMatch(pessoa -> pessoa.getIdade() > 18));
+        System.out.println(pessoas.stream().noneMatch(pessoa -> pessoa.getIdade() < 18));
         
     }
     
