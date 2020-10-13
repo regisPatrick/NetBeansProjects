@@ -34,9 +34,11 @@ public class StreamTest2 {
         System.out.println(Arrays.toString(split));
         List<String[]> collect1 = palavras.stream().map(p -> p.split("")).collect(Collectors.toList());
         Stream<String> stream = Arrays.stream((String[]) palavras.toArray());
-        palavras.stream() // Stream<String>
+        List<String> collect2 = palavras.stream() // Stream<String>
                 .map(p -> p.split("")) // Stream<String[]>
-                .
+                .flatMap(Arrays::stream)// Stream<String>
+                .collect(Collectors.toList());
+        System.out.println(collect2);
     }
     
 }
