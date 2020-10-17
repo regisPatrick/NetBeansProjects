@@ -21,7 +21,12 @@ public class StreamTest3 {
         System.out.println(pessoas.stream().noneMatch(pessoa -> pessoa.getIdade() < 18));
         pessoas.stream().filter(p->p.getIdade() < 25)
                 .findAny()
-            .ifPresent(p->System.out.println(p.getNome()));
+                .ifPresent(p->System.out.println(p.getNome()));
+        
+        pessoas.stream()
+                .filter(pessoa -> pessoa.getIdade() > 30)
+                .findFirst()
+                .ifPresent(p->System.out.println(p.getNome()));
         
     }
     
