@@ -5,6 +5,7 @@
  */
 package streams;
 
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -25,6 +26,7 @@ public class StreamTest3 {
         
         pessoas.stream()
                 .filter(pessoa -> pessoa.getIdade() > 30)
+                .sorted(Comparator.comparing(Pessoa::getIdade).reversed())
                 .findFirst()
                 .ifPresent(p->System.out.println(p.getNome()));
         
