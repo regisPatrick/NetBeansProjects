@@ -7,6 +7,7 @@ package streams;
 
 import static java.util.Arrays.asList;
 import java.util.Optional;
+import java.util.stream.DoubleStream;
 import java.util.stream.Stream;
 
 /**
@@ -29,6 +30,32 @@ public class StreamTest4Reduce {
         Optional<Integer> mult = getStream().reduce((x, y) -> x * y);
         System.out.println(mult.get());
         
+        Integer mult1 = getStream().reduce(0, (x, y) -> x * y);
+        System.out.println(mult1);
+        
+        Optional<Integer> max = getStream().reduce((x, y) -> x > y ? x : y);
+        System.out.println(max.get());
+        
+        Optional<Integer> max2 = getStream().reduce(Integer::max);
+        System.out.println(max2.get());
+        
+        Stream<Pessoa> streamPessoa = Pessoa.bancoDePessoas().stream();
+        Optional<Double> somaSalario = streamPessoa
+                .filter(p -> p.getSalario() > 4000)
+                .map(Pessoa::getSalario)
+                .reduce(Double::sum);
+        System.out.println(somaSalario.get());
+        
+        Double somaDouble = Pessoa.bancoDePessoas().stream()
+                .filter(p -> p.getSalario() > 4000)
+                .mapToDouble(Pessoa::getSalario)
+                .sum();
+        System.out.println(somaDouble);
+        
+        DoubleStream doubleStream = Pessoa.bancoDePessoas().stream()
+                .filter(p -> p.getSalario() > 4000)
+                .mapToDouble(Pessoa::getSalario);
+        Stream<Double> doubleStream2 = doubleStream.boxed();
     }
     
     private static Stream<Integer> getStream(){
