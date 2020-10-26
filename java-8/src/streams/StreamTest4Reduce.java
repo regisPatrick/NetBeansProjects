@@ -17,18 +17,17 @@ public class StreamTest4Reduce {
     
     public static void main(String[] args) {
         
-        Stream<Integer> stream = getStream();
-        Optional<Integer> reduce = stream.reduce((x, y) -> x + y);
-        
-        stream = getStream();
-        Integer soma = stream.reduce(0, (x, y) -> x + y);
-        
-        stream = getStream();
-        Optional<Integer> soma2 = stream.reduce(Integer::sum);
-        
+        Optional<Integer> reduce = getStream().reduce((x, y) -> x + y);
         System.out.println(reduce.get());
+
+        Integer soma = getStream().reduce(0, (x, y) -> x + y);
         System.out.println(soma);
+        
+        Optional<Integer> soma2 = getStream().reduce(Integer::sum);
         System.out.println(soma2.get());
+        
+        Optional<Integer> mult = getStream().reduce((x, y) -> x * y);
+        System.out.println(mult.get());
         
     }
     
