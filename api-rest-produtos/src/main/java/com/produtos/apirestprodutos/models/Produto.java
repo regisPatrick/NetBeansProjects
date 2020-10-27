@@ -32,8 +32,6 @@ public class Produto implements Serializable{
     private BigDecimal quantidade;
     
     private BigDecimal valor;
-
-    private String data;
     
     public long getId() {
         return id;
