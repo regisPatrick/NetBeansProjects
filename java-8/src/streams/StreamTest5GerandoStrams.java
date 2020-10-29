@@ -15,7 +15,7 @@ public class StreamTest5GerandoStrams {
     
     public static void main(String[] args) {
         
-        IntStream.rangeClosed(1, 100);
+        IntStream.rangeClosed(1, 100).filter(n -> n % 2 == 0).forEach(s -> System.out.print(s + " "));
         
     }
     
