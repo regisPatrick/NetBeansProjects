@@ -31,6 +31,10 @@ public class StreamTest5GerandoStrams {
         int nums[] = {1, 2, 3, 4, 5};
         OptionalDouble average = Arrays.stream(nums).average();
         System.out.println(average.getAsDouble());
+        
+        try(Stream<String> lines = Files.lines){
+            
+        }
     }
     
 }
