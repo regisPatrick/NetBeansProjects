@@ -5,6 +5,11 @@
  */
 package streams;
 
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.OptionalDouble;
 import java.util.stream.IntStream;
@@ -32,8 +37,16 @@ public class StreamTest5GerandoStrams {
         OptionalDouble average = Arrays.stream(nums).average();
         System.out.println(average.getAsDouble());
         
-        try(Stream<String> lines = Files.lines){
-            
+        String filename = "Teste.txt";
+        Path pathToFile = Paths.get(filename);
+        System.out.println(pathToFile.toAbsolutePath());
+        
+        try(Stream<String> lines = Files.lines(Paths.get("Teste.txt"), Charset.defaultCharset())){
+            lines.flatMap(line -> Arrays.stream(line.split("\n")))
+            .filter(p -> p.contains("File"))
+            .forEach(System.out::println);
+        }catch(IOException e){
+            e.printStackTrace();
         }
     }
     
