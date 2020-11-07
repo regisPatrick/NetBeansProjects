@@ -51,7 +51,9 @@ public class StreamTest5GerandoStrams {
         
         Stream.iterate(1, n -> n + 2).limit(10).forEach(System.out::println);
         
-        Stream.iterate(new int[]{0, 1}, a -> new int[]{a[1], a[0] + a[1]});
+        Stream.iterate(new int[]{0, 1}, a -> new int[]{a[1], a[0] + a[1]})
+                .limit(5)
+        .forEach(t -> System.out.println(Arrays.toString(t)));
     }
     
 }
