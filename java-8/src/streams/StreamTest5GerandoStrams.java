@@ -12,6 +12,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.OptionalDouble;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -56,9 +57,14 @@ public class StreamTest5GerandoStrams {
         .forEach(t -> System.out.println(Arrays.toString(t)));
         
         Stream.iterate(new int[]{0, 1}, a -> new int[]{a[1], a[0] + a[1]})
-                .limit(5)
+                .limit(10)
                 .map(t -> t[0])
-                .forEach(t -> System.out.println(Arrays.toString(t)));
+                .forEach(System.out::println);
+        
+        Stream.generate(Math::random).limit(10).forEach(System.out::println);
+        
+        ThreadLocalRandom t = ThreadLocalRandom.current();
+        Stream.generate(() -> t.nextInt(1, 100)).limit(100).forEach(System.out::println);
     }
     
 }
