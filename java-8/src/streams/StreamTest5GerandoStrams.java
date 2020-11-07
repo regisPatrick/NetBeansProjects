@@ -48,6 +48,8 @@ public class StreamTest5GerandoStrams {
         }catch(IOException e){
             e.printStackTrace();
         }
+        
+        Stream.iterate(1, n -> n + 2).limit(10).forEach(System.out::println);
     }
     
 }
