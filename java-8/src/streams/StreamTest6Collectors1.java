@@ -21,6 +21,7 @@ public class StreamTest6Collectors1 {
         
         List<Pessoa> pessoas = Pessoa.bancoDePessoas();
         System.out.println(pessoas.stream().count());
+        System.out.println("");
         
     }
     
