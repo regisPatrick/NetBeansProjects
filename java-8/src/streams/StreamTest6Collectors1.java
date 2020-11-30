@@ -11,4 +11,12 @@ package streams;
  */
 public class StreamTest6Collectors1 {
     
+    // Redução e sumarização de Streams em um valor único
+    // Agrupamento de elementos
+    // Particionamento de elementos
+    
+    public static void main(String[] args) {
+        
+    }
+    
 }
