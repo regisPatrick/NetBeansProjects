@@ -5,6 +5,8 @@
  */
 package streams;
 
+import java.util.List;
+
 /**
  *
  * @author user
@@ -16,6 +18,9 @@ public class StreamTest6Collectors1 {
     // Particionamento de elementos
     
     public static void main(String[] args) {
+        
+        List<Pessoa> pessoas = Pessoa.bancoDePessoas();
+        System.out.println(pessoas.stream().count());
         
     }
     
