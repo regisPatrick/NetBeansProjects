@@ -33,7 +33,7 @@ public class ProdutoResource {
     
     @GetMapping("/produto/{id}")
     public Produto listaProdutoUnico(@PathVariable(value="id") long id){
-        return produtoRepository.findAll();
+        return produtoRepository.findById(id);
     }
     
 }
