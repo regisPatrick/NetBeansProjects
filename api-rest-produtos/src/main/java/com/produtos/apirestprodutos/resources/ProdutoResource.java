@@ -40,7 +40,7 @@ public class ProdutoResource {
     
     @PostMapping("/produto")
     public Produto salvaProduto(@RequestBody Produto produto){
-        return null;
+        return produtoRepository.save(produto);
     }
     
 }
