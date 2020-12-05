@@ -18,11 +18,19 @@ public class Pessoa {
     private String nome;
     private int idade;
     private double salario;
+    private Genero genero;
 
     public Pessoa(String nome, int idade, double salario) {
         this.nome = nome;
         this.idade = idade;
         this.salario = salario;
+    }
+
+    public Pessoa(String nome, int idade, double salario, Genero genero) {
+        this.nome = nome;
+        this.idade = idade;
+        this.salario = salario;
+        this.genero = genero;
     }
     
     public static List<Pessoa> bancoDePessoas(){
@@ -86,6 +94,11 @@ public class Pessoa {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Pessoa{" + "nome=" + nome + ", idade=" + idade + ", salario=" + salario + ", genero=" + genero + '}';
     }
     
 }
