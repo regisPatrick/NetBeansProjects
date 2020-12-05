@@ -35,8 +35,8 @@ public class Pessoa {
     
     public static List<Pessoa> bancoDePessoas(){
         return asList(
-                new Pessoa ("Regis Patrick", 22, 2000),
-                new Pessoa ("Mercy", 22, 3500),
+                new Pessoa ("Regis Patrick", 22, 2000, Genero.MASCULINO),
+                new Pessoa ("Mercy", 22, 3500, Genero.FEMININO),
                 new Pessoa ("Mercy", 22, 3500),
                 new Pessoa ("Ana", 19, 1895),
                 new Pessoa ("Thor", 23, 1980),
