@@ -37,13 +37,13 @@ public class Pessoa {
         return asList(
                 new Pessoa ("Regis Patrick", 22, 2000, Genero.MASCULINO),
                 new Pessoa ("Mercy", 22, 3500, Genero.FEMININO),
-                new Pessoa ("Mercy", 22, 3500),
-                new Pessoa ("Ana", 19, 1895),
-                new Pessoa ("Thor", 23, 1980),
-                new Pessoa ("Hulk", 35, 8000),
-                new Pessoa ("Flash", 29, 3200),
-                new Pessoa ("Batman", 37, 10000),
-                new Pessoa ("Lanterna Verde", 24, 5000)
+                new Pessoa ("Mercy", 22, 3500, Genero.FEMININO),
+                new Pessoa ("Ana", 19, 1895, Genero.FEMININO),
+                new Pessoa ("Thor", 23, 1980, Genero.MASCULINO),
+                new Pessoa ("Hulk", 35, 8000, Genero.MASCULINO),
+                new Pessoa ("Flash", 29, 3200, Genero.MASCULINO),
+                new Pessoa ("Batman", 37, 10000, Genero.MASCULINO),
+                new Pessoa ("Lanterna Verde", 24, 5000, Genero.MASCULINO)
         );
     }
 
@@ -71,6 +71,10 @@ public class Pessoa {
         this.salario = salario;
     }
 
+    public Genero getGenero() {
+        return genero;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 3;
