@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import static java.util.stream.Collectors.groupingBy;
 
 /**
  *
@@ -39,10 +40,20 @@ public class StreamTest6Collectors2 {
         System.out.println(collect);
         
         // Agrupar por maioridade
-        pessoas.stream().collect(groupingBy(p->{
+        Map<Maioridade, List<Pessoa>> collect1 = pessoas.stream().collect(groupingBy(p->{
             if(p.getIdade() < 18) return Maioridade.MENOR;
             else return Maioridade.ADULTO;
         }));
+        System.out.println(collect1);
+        
+        // Agrupando por gênero e maioridade
+        // Map<Genero, Map<Maioridade, List<Pessoa>>
+        Map<Genero, Map<Maioridade, List<Pessoa>>> collect2 = pessoas.stream()
+                .collect(groupingBy(Pessoa::getGenero, groupingBy(p->{
+            if(p.getIdade() < 18) return Maioridade.MENOR;
+            else return Maioridade.ADULTO;
+        })));
+        System.out.println(collect2);
         
     }
     
