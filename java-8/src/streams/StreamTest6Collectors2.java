@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -32,6 +33,8 @@ public class StreamTest6Collectors2 {
         generoListMap.put(Genero.FEMININO, femininos);
         generoListMap.put(Genero.MASCULINO, masculinos);
         System.out.println(generoListMap);
+        
+        pessoas.stream().collect(Collectors.groupingBy(Pessoa::getGenero));
         
     }
     
