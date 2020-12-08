@@ -38,12 +38,12 @@ public class Pessoa {
                 new Pessoa ("Regis Patrick", 22, 2000, Genero.MASCULINO),
                 new Pessoa ("Mercy", 22, 3500, Genero.FEMININO),
                 new Pessoa ("Mercy", 22, 3500, Genero.FEMININO),
-                new Pessoa ("Ana", 19, 1895, Genero.FEMININO),
+                new Pessoa ("Ana", 17, 1895, Genero.FEMININO),
                 new Pessoa ("Thor", 23, 1980, Genero.MASCULINO),
                 new Pessoa ("Hulk", 35, 8000, Genero.MASCULINO),
                 new Pessoa ("Flash", 29, 3200, Genero.MASCULINO),
                 new Pessoa ("Batman", 37, 10000, Genero.MASCULINO),
-                new Pessoa ("Lanterna Verde", 24, 5000, Genero.MASCULINO)
+                new Pessoa ("Lanterna Verde", 17, 5000, Genero.MASCULINO)
         );
     }
 

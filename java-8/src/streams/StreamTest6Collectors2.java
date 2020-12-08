@@ -34,8 +34,15 @@ public class StreamTest6Collectors2 {
         generoListMap.put(Genero.MASCULINO, masculinos);
         System.out.println(generoListMap);
         
+        // Agrupamento por gênero
         Map<Genero, List<Pessoa>> collect = pessoas.stream().collect(Collectors.groupingBy(Pessoa::getGenero));
         System.out.println(collect);
+        
+        // Agrupar por maioridade
+        pessoas.stream().collect(groupingBy(p->{
+            if(p.getIdade() < 18) return Maioridade.MENOR;
+            else return Maioridade.ADULTO;
+        }));
         
     }
     
