@@ -34,7 +34,8 @@ public class StreamTest6Collectors2 {
         generoListMap.put(Genero.MASCULINO, masculinos);
         System.out.println(generoListMap);
         
-        pessoas.stream().collect(Collectors.groupingBy(Pessoa::getGenero));
+        Map<Genero, List<Pessoa>> collect = pessoas.stream().collect(Collectors.groupingBy(Pessoa::getGenero));
+        System.out.println(collect);
         
     }
     
