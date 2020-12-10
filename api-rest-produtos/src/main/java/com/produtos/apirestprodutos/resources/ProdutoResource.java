@@ -49,9 +49,6 @@ public class ProdutoResource {
         produtoRepository.delete(produto);
     }
     
-    @PutMapping("/produto")
-    public void deletaProduto(@RequestBody Produto produto){
-        produtoRepository.delete(produto);
-    }
+    
     
 }
