@@ -6,9 +6,11 @@
 package streams;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import static java.util.stream.Collectors.groupingBy;
 
@@ -59,6 +61,11 @@ public class StreamTest6Collectors2 {
         Map<Genero, Long> collect3 = pessoas.stream()
                 .collect(groupingBy(Pessoa::getGenero, Collectors.counting()));
         System.out.println(collect3);
+        
+        // Agrupando por gênero e maior salário
+        Map<Genero, Optional<Pessoa>> collect4 = pessoas.stream()
+                .collect(groupingBy(Pessoa::getGenero, Collectors.maxBy(Comparator.comparing(Pessoa::getSalario))));
+        System.out.println(collect4);
     }
     
 }
