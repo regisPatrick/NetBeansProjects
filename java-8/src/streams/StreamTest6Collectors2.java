@@ -55,6 +55,10 @@ public class StreamTest6Collectors2 {
         })));
         System.out.println(collect2);
         
+        // Agrupando por gênero e quantidade
+        Map<Genero, Long> collect3 = pessoas.stream()
+                .collect(groupingBy(Pessoa::getGenero, Collectors.counting()));
+        System.out.println(collect3);
     }
     
 }
