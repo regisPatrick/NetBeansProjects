@@ -7,6 +7,7 @@ package com.produtos.apirestprodutos.resources;
 
 import com.produtos.apirestprodutos.models.Produto;
 import com.produtos.apirestprodutos.repository.ProdutoRepository;
+import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,26 +32,31 @@ public class ProdutoResource {
     ProdutoRepository produtoRepository;
     
     @GetMapping("/produtos")
+    @ApiOperation(value="Retorna uma lista de produtos")
     public List<Produto> listaProdutos(){
         return produtoRepository.findAll();
     }
     
     @GetMapping("/produto/{id}")
+    @ApiOperation(value="Retorna um produto único")
     public Produto listaProdutoUnico(@PathVariable(value="id") long id){
         return produtoRepository.findById(id);
     }
     
     @PostMapping("/produto")
+    @ApiOperation(value="Salva um produto")
     public Produto salvaProduto(@RequestBody Produto produto){
         return produtoRepository.save(produto);
     }
     
     @DeleteMapping("/produto")
+    @ApiOperation(value="Deleta um produto")
     public void deletaProduto(@RequestBody Produto produto){
         produtoRepository.delete(produto);
     }
     
     @PutMapping("/produto")
+    @ApiOperation(value="Atualiza um produto")
     public Produto atualizaProduto(@RequestBody Produto produto){
         return produtoRepository.save(produto);
     }
