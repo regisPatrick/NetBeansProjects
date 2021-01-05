@@ -7,12 +7,19 @@ package streams;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.DoubleSummaryStatistics;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.mapping;
+import static java.util.stream.Collectors.toCollection;
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toSet;
 
 /**
  *
@@ -62,15 +69,34 @@ public class StreamTest6Collectors2 {
                 .collect(groupingBy(Pessoa::getGenero, Collectors.counting()));
         System.out.println(collect3);
         
-        // Agrupando por gênero e maior salário
+        // Agrupando por gênero e maior salário com optional
         Map<Genero, Optional<Pessoa>> collect4 = pessoas.stream()
                 .collect(groupingBy(Pessoa::getGenero, Collectors.maxBy(Comparator.comparing(Pessoa::getSalario))));
         System.out.println(collect4);
         
+        // Agrupando por gênero e maior salário sem optional
         Map<Genero, Pessoa> collect5 = pessoas.stream().collect(groupingBy(Pessoa::getGenero, 
                 Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparing(Pessoa::getSalario)), 
                         Optional::get)));
         System.out.println(collect5);
+        
+        // Agrupando por gênero e estatísticas
+        Map<Genero, DoubleSummaryStatistics> collect6 = pessoas.stream()
+                .collect(groupingBy(Pessoa::getGenero, Collectors.summarizingDouble(Pessoa::getSalario)));
+        System.out.println(collect6);
+        
+        // Agrupando por gênero e maioridade
+        Map<Genero, Set<Maioridade>> collect7 = pessoas.stream().collect(groupingBy(Pessoa::getGenero, mapping(p -> {
+            if(p.getIdade() < 18) return Maioridade.MENOR;
+            else return Maioridade.ADULTO;
+        }, toSet())));
+        System.out.println(collect7);
+        
+        Map<Genero, Set<Maioridade>> collect8 = pessoas.stream().collect(groupingBy(Pessoa::getGenero, mapping(p -> {
+            if(p.getIdade() < 18) return Maioridade.MENOR;
+            else return Maioridade.ADULTO;
+        }, toCollection(LinkedHashSet::new))));
+        System.out.println(collect8);
     }
     
 }
