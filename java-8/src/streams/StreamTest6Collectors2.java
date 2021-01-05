@@ -66,6 +66,11 @@ public class StreamTest6Collectors2 {
         Map<Genero, Optional<Pessoa>> collect4 = pessoas.stream()
                 .collect(groupingBy(Pessoa::getGenero, Collectors.maxBy(Comparator.comparing(Pessoa::getSalario))));
         System.out.println(collect4);
+        
+        Map<Genero, Pessoa> collect5 = pessoas.stream().collect(groupingBy(Pessoa::getGenero, 
+                Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparing(Pessoa::getSalario)), 
+                        Optional::get)));
+        System.out.println(collect5);
     }
     
 }
