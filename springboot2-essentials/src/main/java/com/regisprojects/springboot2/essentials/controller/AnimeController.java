@@ -7,6 +7,7 @@ package com.regisprojects.springboot2.essentials.controller;
 
 import com.regisprojects.springboot2.essentials.domain.Anime;
 import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("anime")
 public class AnimeController {
     
+    @GetMapping(path = "list")
     public List<Anime> list(){
         return List.of(new Anime("DBZ"), new Anime("Berserk"));
     }
