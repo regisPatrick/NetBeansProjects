@@ -8,6 +8,7 @@ package com.regisprojects.springboot2.essentials;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 /**
  *
@@ -16,6 +17,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableAutoConfiguration
 //@ComponentScan(basePackages = "com.regisprojects.springboot2.essentials")
 @ComponentScan
+@Configuration
 public class ApplicationStart {
     
     public static void main(String[] args) {
