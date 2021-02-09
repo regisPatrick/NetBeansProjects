@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.regisprojects.springboot2.essentials.start;
+package com.regisprojects.springboot2.essentials;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -14,7 +14,8 @@ import org.springframework.context.annotation.ComponentScan;
  * @author user
  */
 @EnableAutoConfiguration
-@ComponentScan(basePackages = "com.regisprojects.springboot2.essentials")
+//@ComponentScan(basePackages = "com.regisprojects.springboot2.essentials")
+@ComponentScan
 public class ApplicationStart {
     
     public static void main(String[] args) {
