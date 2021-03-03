@@ -7,6 +7,7 @@ package com.regisprojects.springboot2.controller;
 
 
 import com.regisprojects.springboot2.domain.Anime;
+import com.regisprojects.springboot2.service.AnimeService;
 import com.regisprojects.springboot2.util.DateUtil;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -23,17 +24,18 @@ import org.springframework.web.bind.annotation.RestController;
  * @author user
  */
 @RestController
-@RequestMapping("anime")
+@RequestMapping("animes")
 @Log4j2
 @RequiredArgsConstructor
 public class AnimeController {
    
     private final DateUtil dateUtil;
+    private final AnimeService animeService;
 
-    @GetMapping(path = "list")
+    @GetMapping
     public List<Anime> list(){
         log.info(dateUtil.formatLocalDateTimeToDatabaseStyle(LocalDateTime.now()));
-        return List.of(new Anime("Boku no Hero"), new Anime("Berserk"));
+        return animeService.listAll();
     }
     
 }
