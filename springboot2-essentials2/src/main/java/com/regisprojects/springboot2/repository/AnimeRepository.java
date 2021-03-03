@@ -5,10 +5,15 @@
  */
 package com.regisprojects.springboot2.repository;
 
+import com.regisprojects.springboot2.domain.Anime;
+import java.util.List;
+
 /**
  *
  * @author user
  */
-public class AnimeRepository {
+public interface AnimeRepository {
+    
+    List<Anime> listAll();
     
 }
