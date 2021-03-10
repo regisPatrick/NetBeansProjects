@@ -39,20 +39,26 @@ public class PesquisaService {
 
             Document doc = Jsoup.connect(url).get();
 
-            Elements elementosTag = doc.select("div.TbwUpd.NJjxre");
-            Elements elementosTag1 = doc.select("h3.LC20lb.DKV0Md span:nth-child(1)");
+            Elements links = doc.select("div.TbwUpd.NJjxre");
+            Elements titulos = doc.select("h3.LC20lb.DKV0Md span:nth-child(1)");
             
             System.out.println("Link:");
 
-            for (Element el : elementosTag) {
+            List<String> listaLinks = new ArrayList<>();
+            for (Element el : links) {
                 System.out.println(el.text());
+                listaLinks.add(el.text());
             }
+            System.out.println(listaLinks);
             
             System.out.println("Título:");
 
-            for (Element el : elementosTag1) {
+            List<String> listaTitulos = new ArrayList<>();
+            for (Element el : titulos) {
                 System.out.println(el.text());
+                listaTitulos.add(el.text());
             }
+            System.out.println(listaTitulos);
 
         } catch (IOException e) {
             e.printStackTrace();
