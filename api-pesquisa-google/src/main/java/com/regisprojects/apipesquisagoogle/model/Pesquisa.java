@@ -35,5 +35,10 @@ public class Pesquisa {
     public void setLink(String link) {
         this.link = link;
     }
+
+    @Override
+    public String toString() {
+        return "Pesquisa{" + "titulo=" + titulo + ", link=" + link + '}';
+    }
     
 }
