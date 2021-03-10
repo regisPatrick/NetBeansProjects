@@ -5,11 +5,9 @@
  */
 package com.regisprojects.apipesquisagoogle.service;
 
-import com.google.gson.Gson;
 import com.regisprojects.apipesquisagoogle.model.Pesquisa;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import org.jsoup.Jsoup;
@@ -26,7 +24,7 @@ public class PesquisaService {
 
     private String urlString = "https://www.google.com/search?q=";
 
-    public String getConnection(String parametroDeBusca) {
+    public List<Pesquisa> getConnection(String parametroDeBusca) {
 
         String url = urlString + parametroDeBusca;
 
@@ -37,14 +35,13 @@ public class PesquisaService {
             Elements links = doc.select("div.TbwUpd.NJjxre");
             Elements titulos = doc.select("h3.LC20lb.DKV0Md span:nth-child(1)");
 
-//            System.out.println("Link:");
+            // Colocar os links obtidos da listaLinks
             List<String> listaLinks = new ArrayList<>();
             for (Element el : links) {
-//                System.out.println(el.text());
                 listaLinks.add(el.text());
             }
-//            System.out.println(listaLinks);
-
+            
+            // Formatar os links obtidos na listaLinks colocando-os já formatados na listaLinkFormatada
             String formater;
             List<String> listaLinkFormatada = new ArrayList<>();
             for (String link : listaLinks) {
@@ -54,22 +51,17 @@ public class PesquisaService {
                 link = formater;
                 listaLinkFormatada.add(link);
             }
-//            System.out.println(listaLinks);
-//            System.out.println(listaLinkFormatada);
-//            
-//            System.out.println("Título:");
-
+            
+            // Colocar os títulos obtidos na listaTitulos
             List<String> listaTitulos = new ArrayList<>();
             for (Element el : titulos) {
-//                System.out.println(el.text());
                 listaTitulos.add(el.text());
             }
-//            System.out.println(listaTitulos);
-
+            
+            // Método para unir as listas de links e títulos em uma só lista, a listaPesquisa
             List<Pesquisa> listaPesquisa = populaListaPesquisa(listaTitulos, listaLinkFormatada);
-            String json = converteListaPesquisaParaJson(listaPesquisa);
 
-            return json;
+            return listaPesquisa;
         
         } catch (IOException e) {
             e.printStackTrace();
@@ -89,7 +81,6 @@ public class PesquisaService {
             titulos[i] = titulo;
             i++;
         }
-        System.out.println(Arrays.toString(titulos));
 
         String[] links = new String[10];
         int j = 0;
@@ -97,7 +88,6 @@ public class PesquisaService {
             links[j] = link;
             j++;
         }
-        System.out.println(Arrays.toString(links));
 
         Pesquisa pesquisa;
         for (int z = 0; z < links.length; z++) {
@@ -109,24 +99,9 @@ public class PesquisaService {
             pesquisa.setLink(links[z]);
             listaPesquisa.add(pesquisa);
         }
-        System.out.println(listaPesquisa);
-
-        for (Pesquisa p : listaPesquisa) {
-            System.out.println(p.getLink());
-            System.out.println(p.getTitulo());
-        }
 
         return listaPesquisa;
 
-    }
-
-    private String converteListaPesquisaParaJson(List<Pesquisa> listaPesquisa) {
-
-        Gson gson = new Gson();
-        String listJson = gson.toJson(listaPesquisa);
-
-        System.out.println(listJson);
-        return listJson;
     }
 
 }

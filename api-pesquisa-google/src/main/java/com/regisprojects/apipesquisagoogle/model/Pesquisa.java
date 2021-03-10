@@ -5,9 +5,6 @@
  */
 package com.regisprojects.apipesquisagoogle.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author user

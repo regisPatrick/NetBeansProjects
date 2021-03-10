@@ -5,9 +5,11 @@
  */
 package com.regisprojects.apipesquisagoogle.controller;
 
+import com.regisprojects.apipesquisagoogle.model.Pesquisa;
 import com.regisprojects.apipesquisagoogle.service.PesquisaService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,7 +29,7 @@ public class PesquisaController {
     PesquisaService ps;
     
     @GetMapping(path = "/{word}")
-    public String findByWord(@PathVariable String word){
+    public List<Pesquisa> findByWord(@PathVariable String word){
         return ps.getConnection(word);
     }
     
