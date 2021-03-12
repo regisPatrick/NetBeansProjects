@@ -23,17 +23,18 @@ import org.jsoup.select.Elements;
 public class PesquisaService {
 
     private String urlString = "https://www.google.com/search?q=";
-
+    private List<Pesquisa> listaPesquisa;
+    
     public List<Pesquisa> getConnection(String parametroDeBusca) {
 
         String url = urlString + parametroDeBusca;
 
         try {
-
+            
             Document doc = Jsoup.connect(url).get();
 
             Elements links = doc.select("div.TbwUpd.NJjxre");
-            Elements titulos = doc.select("h3.LC20lb.DKV0Md span:nth-child(1)");
+            Elements titulos = doc.select("h3.LC20lb.DKV0Md");
 
             // Colocar os links obtidos da listaLinks
             List<String> listaLinks = new ArrayList<>();
@@ -59,21 +60,19 @@ public class PesquisaService {
             }
             
             // Método para unir as listas de links e títulos em uma só lista, a listaPesquisa
-            List<Pesquisa> listaPesquisa = populaListaPesquisa(listaTitulos, listaLinkFormatada);
-
-            return listaPesquisa;
-        
+            this.listaPesquisa = populaListaPesquisa(listaTitulos, listaLinkFormatada);
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return null;
+        return this.listaPesquisa;
 
     }
 
     private List<Pesquisa> populaListaPesquisa(List<String> listaTitulos, List<String> listaLinkFormatada) {
 
-        List<Pesquisa> listaPesquisa = new ArrayList<>();
+        List<Pesquisa> listaPesquisaCompleta = new ArrayList<>();
 
         String[] titulos = new String[10];
         int i = 0;
@@ -97,10 +96,10 @@ public class PesquisaService {
             pesquisa = new Pesquisa();
             pesquisa.setTitulo(titulos[z]);
             pesquisa.setLink(links[z]);
-            listaPesquisa.add(pesquisa);
+            listaPesquisaCompleta.add(pesquisa);
         }
 
-        return listaPesquisa;
+        return listaPesquisaCompleta;
 
     }
 
