@@ -50,7 +50,7 @@ public class AnimeController {
     
     @PostMapping
     public ResponseEntity<Anime> save(@RequestBody Anime anime){
-        animeService.save(anime);
+        return new ResponseEntity<>(animeService.save(anime), HttpStatus.CREATED);
     }
     
 }
